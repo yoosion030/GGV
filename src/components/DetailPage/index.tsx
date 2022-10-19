@@ -1,8 +1,8 @@
 import MovieDetail from 'components/MovieDetail';
 import { useEffect, useState } from 'react';
-import { DetailData, MovieDetailType } from 'types/MovieDetail';
+import { DetailDataType, MovieDetailType } from 'types/MovieDetail';
 
-const DetailPage = ({ data }: DetailData) => {
+const DetailPage = ({ data }: DetailDataType) => {
   const [movie, setMovie] = useState<MovieDetailType>();
 
   useEffect(() => {

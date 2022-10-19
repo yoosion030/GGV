@@ -1,4 +1,4 @@
-export interface MovieData {
+export interface MovieDataType {
   data: {
     results: MovieType[];
   };

@@ -1,15 +1,15 @@
 import type { GetServerSideProps, NextPage } from 'next';
 import { MainPage } from 'components';
 import axios from 'axios';
-import { MovieData } from 'types/Movie';
+import { MovieDataType } from 'types/Movie';
 
-const Home: NextPage<MovieData> = ({ data }) => {
+const Home: NextPage<MovieDataType> = ({ data }) => {
   return <MainPage data={data} />;
 };
 
 export const getServerSideProps: GetServerSideProps = async () => {
   try {
-    const { data }: MovieData = await axios.get(
+    const { data }: MovieDataType = await axios.get(
       `https://api.themoviedb.org/3/movie/now_playing/?api_key=${process.env.API_KEY}`,
     );
     return {

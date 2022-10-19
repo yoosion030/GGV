@@ -1,8 +1,8 @@
 import { Movie } from 'components';
 import { useEffect, useState } from 'react';
-import { MovieData, MovieType } from 'types/Movie';
+import { MovieDataType, MovieType } from 'types/Movie';
 
-const MainPage = ({ data }: MovieData) => {
+const MainPage = ({ data }: MovieDataType) => {
   const [movies, setMovies] = useState<MovieType[]>();
 
   useEffect(() => {

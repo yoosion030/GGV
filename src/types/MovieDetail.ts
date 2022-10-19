@@ -1,4 +1,4 @@
-export interface DetailData {
+export interface DetailDataType {
   data: MovieDetailType;
 }
 
@@ -9,5 +9,5 @@ export interface MovieDetailType {
   release_date: string;
   homepage: string;
   overview: string;
-  
+
 }

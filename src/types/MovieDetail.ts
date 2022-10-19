@@ -9,5 +9,4 @@ export interface MovieDetailType {
   release_date: string;
   homepage: string;
   overview: string;
-
 }

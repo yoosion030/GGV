@@ -1,10 +1,9 @@
-import axios from 'axios';
-import { DetailPage } from 'components';
 import type { GetServerSideProps, NextPage } from 'next';
+import { DetailPage } from 'components';
+import axios from 'axios';
 import { DetailDataType } from 'types/MovieDetail';
 
 const detail: NextPage<DetailDataType> = ({ data }) => {
-  console.log(data);
   return <DetailPage data={data} />;
 };
 

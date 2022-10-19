@@ -1,7 +1,5 @@
 export interface MovieData {
   data: {
-    dates: any;
-    page: number;
     results: MovieType[];
   };
 }

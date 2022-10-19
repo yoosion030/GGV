@@ -8,15 +8,20 @@ const Home: NextPage<MovieData> = ({ data }) => {
 };
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const { data }: MovieData = await axios.get(
-    'https://api.themoviedb.org/3/movie/now_playing/?api_key=' +
-      process.env.API_KEY,
-  );
-  return {
-    props: {
-      data,
-    },
-  };
+  try {
+    const { data }: MovieData = await axios.get(
+      `https://api.themoviedb.org/3/movie/now_playing/?api_key=${process.env.API_KEY}`,
+    );
+    return {
+      props: {
+        data,
+      },
+    };
+  } catch (e) {
+    return {
+      props: {},
+    };
+  }
 };
 
 export default Home;

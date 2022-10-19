@@ -1,25 +1,17 @@
-import axios from 'axios';
 import { Movie } from 'components';
 import { useEffect, useState } from 'react';
+import { MovieData, MovieType } from 'types/Movie';
 
-const MainPage = () => {
-  const [movies, setMovies] = useState<Array<any>>();
-  const getData = async () => {
-    const { data } = await axios.get(
-      'https://api.themoviedb.org/3/movie/now_playing/?api_key=' +
-        process.env.API_KEY,
-    );
-    console.log(data);
-    setMovies(data.results);
-  };
+const MainPage = ({ data }: MovieData) => {
+  const [movies, setMovies] = useState<MovieType[]>();
 
   useEffect(() => {
-    getData();
+    setMovies(data.results);
   }, []);
   return (
     <div>
-      {movies?.map((movie, id) => (
-        <Movie key={id} movie={movie} />
+      {movies?.map(movie => (
+        <Movie key={movie.id} movie={movie} />
       ))}
     </div>
   );

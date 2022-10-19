@@ -8,6 +8,7 @@ const MainPage = ({ data }: MovieData) => {
   useEffect(() => {
     setMovies(data.results);
   }, []);
+
   return (
     <div>
       {movies?.map(movie => (

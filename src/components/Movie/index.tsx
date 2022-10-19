@@ -1,17 +1,14 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { MovieType } from 'types/Movie';
+
 interface MovieProps {
-  movie: {
-    id: number;
-    title: string;
-    poster_path: string;
-    release_date: string;
-  };
+  movie: MovieType;
 }
 
 const Movie = ({ movie }: MovieProps) => {
   return (
-    <Link href="a">
+    <Link href={`movie/${movie.id}`}>
       <a>
         <p>{movie.title}</p>
         <p>{movie.release_date}</p>

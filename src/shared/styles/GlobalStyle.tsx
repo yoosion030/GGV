@@ -49,7 +49,7 @@ export function GlobalStyle() {
 
         button,
         input {
-          font-family: 'Noto Sans KR', sans-serif;
+          font-family: 'GmarketSansMedium', sans-serif;
         }
       `}
     />

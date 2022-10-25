@@ -4,12 +4,20 @@ export const Header = styled.header`
   position: fixed;
   height: 80px;
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.1);
+  background: rgba(0, 0, 0, 0.1);
   box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.25);
   backdrop-filter: blur(13.5px);
   z-index: 5;
   padding: 0 200px;
   font-family: 'GmarketSansLight';
+  a {
+    color: #ffffff;
+  }
+
+  svg {
+    width: 104px;
+    height: 28px;
+  }
 `;
 
 export const Nav = styled.nav`
@@ -20,10 +28,15 @@ export const Nav = styled.nav`
   height: 100%;
 `;
 
+export const NavWrapper = styled.div`
+  display: flex;
+  gap: 48px;
+`;
+
 export const Logo = styled.div`
   font-size: 32px;
 `;
 
-export const NavContent = styled.div`
+export const NavContent = styled.a`
   font-size: 18px;
 `;

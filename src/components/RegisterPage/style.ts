@@ -12,15 +12,15 @@ export const RegisterBackground = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-
-  svg {
-    position: absolute;
-    top: 220px;
-    left: 400px;
-  }
 `;
 
-export const RegisterSection = styled.div`
+export const LogoWrapper = styled.div`
+  position: absolute;
+  left: 104px;
+  top: 104px;
+`;
+
+export const RegisterSection = styled.form`
   width: 496px;
   height: 680px;
   background: rgba(0, 0, 0, 0.6);
@@ -31,18 +31,13 @@ export const RegisterSection = styled.div`
   padding: 32px;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 `;
 
 export const Title = styled.h1`
-  margin: 60px 0;
   font-family: 'GmarketSansMedium';
-  font-size: 40px;
-`;
-
-export const InputSection = styled.form`
-  flex: 1;
-  display: flex;
-  flex-direction: column;
+  font-size: 24px;
+  margin-top: 23px;
 `;
 
 export const InputTitle = styled.p`
@@ -60,22 +55,34 @@ interface ErrorStyleProps {
 
 export const Input = styled.input<ErrorStyleProps>`
   height: 56px;
-  background: #454545;
+  background-color: #454545;
   border-radius: 8px;
-  outline: none;
   padding: 0 12px;
   font-size: 16px;
   margin-bottom: 40px;
   color: #ffffff;
-  &::placeholder {
-    color: #808080;
-  }
   border: ${({ errorStyle }) => (errorStyle ? '1px solid #FB4F55' : 'none')};
   animation: ${({ errorStyle }) =>
     errorStyle &&
     css`
       ${shake} .5s
     `};
+  &::placeholder {
+    color: #808080;
+  }
+  :focus {
+    border: 1px solid #759cff;
+    outline: none;
+  }
+
+  // 크롬 최적화
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus,
+  &:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px #454545 inset !important;
+    -webkit-text-fill-color: #ffffff;
+  }
 `;
 
 export const InputWrapper = styled.div`
@@ -91,5 +98,5 @@ export const Button = styled.button`
   border-radius: 10px;
   border: none;
   cursor: pointer;
-  margin: auto 0 0 auto;
+  margin-left: auto;
 `;

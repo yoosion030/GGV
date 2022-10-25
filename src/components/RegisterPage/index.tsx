@@ -35,58 +35,60 @@ const RegisterPage = () => {
 
   return (
     <S.RegisterBackground>
-      <I.Logo />
-      <S.RegisterSection>
-        <S.Title>Welcome to GGV</S.Title>
-        <S.InputSection onSubmit={handleSubmit(onValid, inValid)}>
-          <div>
-            <S.InputTitle>이름</S.InputTitle>
+      <S.LogoWrapper>
+        <I.BigLogo />
+      </S.LogoWrapper>
+      <S.RegisterSection onSubmit={handleSubmit(onValid, inValid)}>
+        <div>
+          <I.Logo />
+          <S.Title>Welcome to GGV</S.Title>
+        </div>
+        <div>
+          <S.InputTitle>이름</S.InputTitle>
+          <S.Input
+            css={css`
+              width: 100%;
+            `}
+            placeholder="이름을 입력해주세요!"
+            {...register('name', { required: true })}
+            errorStyle={errors.name}
+          />
+
+          <S.InputTitle>생년월일</S.InputTitle>
+          <S.InputWrapper>
             <S.Input
               css={css`
-                width: 100%;
+                width: 200px;
               `}
-              placeholder="이름을 입력해주세요!"
-              {...register('name', { required: true })}
-              errorStyle={errors.name}
+              placeholder="YYYY"
+              {...register('year', {
+                required: true,
+              })}
+              errorStyle={errors.year}
             />
-          </div>
-          <div>
-            <S.InputTitle>생년월일</S.InputTitle>
-            <S.InputWrapper>
-              <S.Input
-                css={css`
-                  width: 200px;
-                `}
-                placeholder="YYYY"
-                {...register('year', {
-                  required: true,
-                })}
-                errorStyle={errors.year}
-              />
-              <S.Input
-                css={css`
-                  width: 100px;
-                `}
-                placeholder="MM"
-                {...register('month', {
-                  required: true,
-                })}
-                errorStyle={errors.month}
-              />
-              <S.Input
-                css={css`
-                  width: 100px;
-                `}
-                placeholder="DD"
-                {...register('date', {
-                  required: true,
-                })}
-                errorStyle={errors.date}
-              />
-            </S.InputWrapper>
-          </div>
-          <S.Button>시작하기</S.Button>
-        </S.InputSection>
+            <S.Input
+              css={css`
+                width: 100px;
+              `}
+              placeholder="MM"
+              {...register('month', {
+                required: true,
+              })}
+              errorStyle={errors.month}
+            />
+            <S.Input
+              css={css`
+                width: 100px;
+              `}
+              placeholder="DD"
+              {...register('date', {
+                required: true,
+              })}
+              errorStyle={errors.date}
+            />
+          </S.InputWrapper>
+        </div>
+        <S.Button>시작하기</S.Button>
       </S.RegisterSection>
     </S.RegisterBackground>
   );

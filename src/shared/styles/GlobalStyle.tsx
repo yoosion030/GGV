@@ -23,7 +23,7 @@ export function GlobalStyle() {
         }
 
         body::-webkit-scrollbar {
-          width: 16px;
+          width: 10px;
         }
 
         body::-webkit-scrollbar-thumb {

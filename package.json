@@ -19,6 +19,11 @@
     "react-hook-form": "^7.38.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.19.6",
+    "@babel/preset-react": "^7.18.6",
+    "@emotion/babel-plugin": "^11.10.2",
+    "@emotion/babel-preset-css-prop": "^11.10.0",
+    "@types/babel__core": "^7",
     "@types/node": "18.11.2",
     "@types/react": "18.0.21",
     "@types/react-dom": "18.0.6",

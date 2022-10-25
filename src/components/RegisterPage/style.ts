@@ -1,4 +1,7 @@
+import { css } from '@emotion/react';
 import styled from '@emotion/styled';
+import { FieldError } from 'react-hook-form';
+import { shake } from 'shared/styles/Animation';
 
 export const RegisterBackground = styled.div`
   width: 100vw;
@@ -51,19 +54,28 @@ export const InputTitle = styled.p`
   margin-bottom: 8px;
 `;
 
-export const Input = styled.input`
+interface ErrorStyleProps {
+  errorStyle?: FieldError | undefined;
+}
+
+export const Input = styled.input<ErrorStyleProps>`
   height: 56px;
   background: #454545;
   border-radius: 8px;
-  border: none;
   outline: none;
   padding: 0 12px;
   font-size: 16px;
   margin-bottom: 40px;
+  color: #ffffff;
   &::placeholder {
     color: #808080;
   }
-  color: #ffffff;
+  border: ${({ errorStyle }) => (errorStyle ? '1px solid #FB4F55' : 'none')};
+  animation: ${({ errorStyle }) =>
+    errorStyle &&
+    css`
+      ${shake} .5s
+    `};
 `;
 
 export const InputWrapper = styled.div`

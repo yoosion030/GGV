@@ -20,9 +20,11 @@ const RegisterPage = () => {
   const onValid = (data: RegisterForm) => {
     console.log(data);
   };
+
   const inValid = (error: FieldErrors) => {
     console.log(error);
   };
+
   return (
     <S.RegisterBackground>
       <I.Logo />
@@ -37,6 +39,7 @@ const RegisterPage = () => {
               `}
               placeholder="이름을 입력해주세요!"
               {...register('name', { required: true })}
+              errorStyle={errors.name}
             />
           </div>
           <div>
@@ -56,6 +59,7 @@ const RegisterPage = () => {
                     message: '숫자를 입력해주세요.',
                   },
                 })}
+                errorStyle={errors.year}
               />
               <S.Input
                 css={css`
@@ -71,6 +75,7 @@ const RegisterPage = () => {
                     message: '숫자를 입력해주세요.',
                   },
                 })}
+                errorStyle={errors.month}
               />
               <S.Input
                 css={css`
@@ -86,6 +91,7 @@ const RegisterPage = () => {
                     message: '숫자를 입력해주세요.',
                   },
                 })}
+                errorStyle={errors.day}
               />
             </S.InputWrapper>
           </div>

@@ -2,12 +2,13 @@ import * as S from './style';
 import { css } from '@emotion/react';
 import * as I from 'assets/svg';
 import { FieldErrors, useForm } from 'react-hook-form';
+import { useRouter } from 'next/router';
 
 interface RegisterForm {
   name: string;
-  year: number;
-  month: number;
-  day: number;
+  year: string;
+  month: string;
+  date: string;
 }
 
 const RegisterPage = () => {
@@ -16,9 +17,16 @@ const RegisterPage = () => {
     register,
     formState: { errors },
   } = useForm<RegisterForm>();
+  const { push } = useRouter();
 
-  const onValid = (data: RegisterForm) => {
-    console.log(data);
+  const onValid = ({ name, year, month, date }: RegisterForm) => {
+    console.log('로컬스토리지에 저장');
+
+    window.localStorage.setItem('name', name);
+    window.localStorage.setItem('year', year);
+    window.localStorage.setItem('month', month);
+    window.localStorage.setItem('date', date);
+    push('/');
   };
 
   const inValid = (error: FieldErrors) => {
@@ -51,13 +59,7 @@ const RegisterPage = () => {
                 `}
                 placeholder="YYYY"
                 {...register('year', {
-                  maxLength: 4,
-                  valueAsNumber: true,
                   required: true,
-                  pattern: {
-                    value: /${0-8}/,
-                    message: '숫자를 입력해주세요.',
-                  },
                 })}
                 errorStyle={errors.year}
               />
@@ -67,13 +69,7 @@ const RegisterPage = () => {
                 `}
                 placeholder="MM"
                 {...register('month', {
-                  maxLength: 2,
-                  valueAsNumber: true,
                   required: true,
-                  pattern: {
-                    value: /^[0-9]{1, 2}$/,
-                    message: '숫자를 입력해주세요.',
-                  },
                 })}
                 errorStyle={errors.month}
               />
@@ -82,16 +78,10 @@ const RegisterPage = () => {
                   width: 100px;
                 `}
                 placeholder="DD"
-                {...register('day', {
-                  maxLength: 2,
-                  valueAsNumber: true,
+                {...register('date', {
                   required: true,
-                  pattern: {
-                    value: /^[0-9]{1, 2}$/,
-                    message: '숫자를 입력해주세요.',
-                  },
                 })}
-                errorStyle={errors.day}
+                errorStyle={errors.date}
               />
             </S.InputWrapper>
           </div>

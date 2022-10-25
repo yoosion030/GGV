@@ -2,6 +2,7 @@ import { Movie } from 'components';
 import { useEffect, useState } from 'react';
 import { MovieDataType, MovieType } from 'types/Movie';
 import { Header } from 'components';
+import * as S from './style';
 
 const MainPage = ({ data }: MovieDataType) => {
   const [movies, setMovies] = useState<MovieType[]>();
@@ -11,12 +12,14 @@ const MainPage = ({ data }: MovieDataType) => {
   }, []);
 
   return (
-    <div>
+    <>
       <Header />
-      {movies?.map(movie => (
-        <Movie key={movie.id} movie={movie} />
-      ))}
-    </div>
+      <S.Mainsection>
+        {movies?.map(movie => (
+          <Movie key={movie.id} movie={movie} />
+        ))}
+      </S.Mainsection>
+    </>
   );
 };
 

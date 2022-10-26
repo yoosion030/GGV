@@ -7,6 +7,7 @@ import * as S from './style';
 const UserPage = () => {
   const [name, setName] = useState<string | null>('');
   const [likeMovie, setLikeMovie] = useRecoilState(LikeMovie);
+
   useEffect(() => {
     setName(window.localStorage.getItem('name'));
     const result = window.localStorage.getItem('likeMovie');
@@ -21,13 +22,15 @@ const UserPage = () => {
 
       <S.UserSection>
         <S.Title>{name}님이 고른 영화 🍿</S.Title>
-        <S.MovieSection>
-          {likeMovie ? (
-            likeMovie.map((id, i) => <UserMovie key={i} id={id} />)
-          ) : (
-            <h1>저장한 영화가 없습니다.</h1>
-          )}
-        </S.MovieSection>
+        {likeMovie?.length === 0 ? (
+          <S.InfoText>저장한 영화가 없습니다.</S.InfoText>
+        ) : (
+          <S.MovieSection>
+            {likeMovie?.map((id, i) => (
+              <UserMovie id={id} key={i} />
+            ))}
+          </S.MovieSection>
+        )}
       </S.UserSection>
     </>
   );

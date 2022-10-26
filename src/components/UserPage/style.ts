@@ -2,8 +2,6 @@ import styled from '@emotion/styled';
 
 export const UserSection = styled.div`
   width: 100%;
-  /* height: 100vh; */
-  background-color: #191919;
   padding: 144px 200px;
 `;
 
@@ -24,4 +22,11 @@ export const MovieSection = styled.div`
   grid-template-columns: repeat(auto-fill, minmax(356px, auto));
   justify-content: space-between;
   row-gap: 56px;
+`;
+
+export const InfoText = styled.p`
+  text-align: center;
+  margin-top: 300px;
+  font-size: 24px;
+  line-height: 54px;
 `;

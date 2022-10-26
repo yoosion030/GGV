@@ -1,0 +1,1 @@
+export { LikeMovie } from './AtomContainer';

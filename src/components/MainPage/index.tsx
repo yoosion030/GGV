@@ -6,7 +6,6 @@ import * as S from './style';
 
 const MainPage = ({ data }: MovieDataType) => {
   const [movies, setMovies] = useState<MovieType[]>();
-
   useEffect(() => {
     setMovies(data?.results);
   }, []);

@@ -41,7 +41,6 @@ export const Title = styled.h1`
 `;
 
 export const InputTitle = styled.p`
-  font-family: 'Noto Sans KR';
   font-style: normal;
   font-weight: 500;
   font-size: 14px;

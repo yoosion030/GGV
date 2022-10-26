@@ -1,7 +1,6 @@
 import styled from '@emotion/styled';
 
 export const Movie = styled.a`
-  font-family: 'Noto Sans KR';
   color: #ffffff;
   display: inline-block;
   width: 356px;

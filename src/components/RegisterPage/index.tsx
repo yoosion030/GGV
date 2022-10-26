@@ -87,6 +87,10 @@ const RegisterPage = () => {
               errorStyle={errors.date}
             />
           </S.InputWrapper>
+          <S.ErrorMessage>
+            {(errors.name || errors.date || errors.month || errors.year) &&
+              '에러발생'}
+          </S.ErrorMessage>
         </div>
         <S.Button>시작하기</S.Button>
       </S.RegisterSection>

@@ -60,7 +60,7 @@ export const Input = styled.input<ErrorStyleProps>`
   font-size: 16px;
   margin-bottom: 40px;
   color: #ffffff;
-  border: ${({ errorStyle }) => (errorStyle ? '1px solid #FB4F55' : 'none')};
+  border: ${({ errorStyle }) => (errorStyle ? '1px solid #EB0707' : 'none')};
   animation: ${({ errorStyle }) =>
     errorStyle &&
     css`
@@ -70,7 +70,7 @@ export const Input = styled.input<ErrorStyleProps>`
     color: #808080;
   }
   :focus {
-    border: 1px solid #759cff;
+    border: 1px solid #ff937b;
     outline: none;
   }
 
@@ -87,6 +87,10 @@ export const Input = styled.input<ErrorStyleProps>`
 export const InputWrapper = styled.div`
   display: flex;
   justify-content: space-between;
+`;
+
+export const ErrorMessage = styled.p`
+  color: #eb0707;
 `;
 
 export const Button = styled.button`

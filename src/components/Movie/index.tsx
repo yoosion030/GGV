@@ -12,8 +12,8 @@ const Movie = ({ movie }: MovieProps) => {
       <Image
         src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
         alt=""
-        width={356}
-        height={524}
+        width={350}
+        height={461}
       />
       <S.Title>{movie.title}</S.Title>
       <S.Overview>{movie.overview}</S.Overview>

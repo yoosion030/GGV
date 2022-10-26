@@ -7,7 +7,6 @@ interface MovieProps {
 }
 
 const Popular = ({ movie }: MovieProps) => {
-  console.log(movie && movie[0]);
   return (
     <S.Background>
       <S.Blur />

@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 export const Background = styled.div`
   width: 100%;
   height: 100vh;
-  /* background: url(popularBackground.jpg), #040404; */
+  background: url(popularBackground.jpg), #040404;
   background-position: center;
   background-size: cover;
   backdrop-filter: blur(40px);

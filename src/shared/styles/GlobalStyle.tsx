@@ -14,7 +14,7 @@ export function GlobalStyle() {
         }
 
         body {
-          font-family: 'GmarketSansMedium', sans-serif;
+          font-family: 'Roboto', sans-serif;
           color: #ffffff;
         }
 

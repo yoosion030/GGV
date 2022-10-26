@@ -15,11 +15,14 @@ const MainPage = ({ data }: MovieDataType) => {
     <>
       <Header />
       <Popular movie={movies} />
-      <S.Mainsection>
-        {movies?.map(movie => (
-          <Movie key={movie.id} movie={movie} />
-        ))}
-      </S.Mainsection>
+      <S.MainSection>
+        <S.MainTitle>영화 리스트</S.MainTitle>
+        <S.MovieSection>
+          {movies?.map(movie => (
+            <Movie key={movie.id} movie={movie} />
+          ))}
+        </S.MovieSection>
+      </S.MainSection>
     </>
   );
 };

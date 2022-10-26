@@ -16,7 +16,7 @@ const Movie = ({ movie }: MovieProps) => {
         height={524}
       />
       <S.Title>{movie.title}</S.Title>
-      <p>{movie.release_date}</p>
+      <S.Overview>{movie.overview}</S.Overview>
     </S.Movie>
   );
 };

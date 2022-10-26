@@ -1,7 +1,7 @@
 import { Movie } from 'components';
 import { useEffect, useState } from 'react';
 import { MovieDataType, MovieType } from 'types/Movie';
-import { Header } from 'components';
+import { Header, Popular } from 'components';
 import * as S from './style';
 
 const MainPage = ({ data }: MovieDataType) => {
@@ -14,6 +14,7 @@ const MainPage = ({ data }: MovieDataType) => {
   return (
     <>
       <Header />
+      <Popular movie={movies} />
       <S.Mainsection>
         {movies?.map(movie => (
           <Movie key={movie.id} movie={movie} />

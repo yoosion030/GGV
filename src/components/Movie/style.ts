@@ -45,5 +45,5 @@ export const LikeButton = styled.button`
   border-radius: 38.0625px;
   border: none;
   cursor: pointer;
-  z-index: 5;
+  z-index: 4;
 `;

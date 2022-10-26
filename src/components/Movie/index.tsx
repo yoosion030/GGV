@@ -7,9 +7,9 @@ interface MovieProps {
 }
 
 const Movie = ({ movie }: MovieProps) => {
-  const handleLike= () => {
-    console.log('저장 작업 실행')
-  }
+  const handleLike = () => {
+    console.log('저장 작업 실행');
+  };
   return (
     <S.Movie>
       <S.MovieInfo href={`movie/${movie.id}`}>

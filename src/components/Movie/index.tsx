@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import { MovieType } from 'types/Movie';
-import * as S from './style';
+import * as S from 'shared/styles/Movie';
 import * as I from 'assets/svg';
 import { useEffect, useState } from 'react';
 import { useRecoilState } from 'recoil';

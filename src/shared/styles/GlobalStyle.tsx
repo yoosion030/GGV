@@ -16,6 +16,7 @@ export function GlobalStyle() {
         body {
           font-family: 'Roboto', sans-serif;
           color: #ffffff;
+          background-color: #191919;
         }
 
         a {

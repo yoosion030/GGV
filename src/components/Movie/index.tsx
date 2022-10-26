@@ -2,13 +2,16 @@ import Image from 'next/image';
 import { MovieType } from 'types/Movie';
 import * as S from './style';
 import * as I from 'assets/svg';
+import { useState } from 'react';
 interface MovieProps {
   movie: MovieType;
 }
 
 const Movie = ({ movie }: MovieProps) => {
+  const [isLike, setIsLike] = useState(false);
   const handleLike = () => {
     console.log('저장 작업 실행');
+    setIsLike(!isLike);
   };
   return (
     <S.Movie>
@@ -23,7 +26,7 @@ const Movie = ({ movie }: MovieProps) => {
         <S.Overview>{movie.overview}</S.Overview>
       </S.MovieInfo>
       <S.LikeButton onClick={handleLike}>
-        <I.LikeIcon />
+        {isLike ? <I.PinkLikeIcon /> : <I.LikeIcon />}
       </S.LikeButton>
     </S.Movie>
   );

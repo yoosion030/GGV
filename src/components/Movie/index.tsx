@@ -30,11 +30,20 @@ const Movie = ({ movie }: MovieProps) => {
     setIsLike(!isLike);
 
     if (likeMovie) {
-      window.localStorage.setItem(
-        'likeMovie',
-        JSON.stringify([...likeMovie, movie.id]),
-      );
-      setLikeMovie([...likeMovie, movie.id]);
+      if (likeMovie.includes(movie.id)) {
+        console.log(likeMovie);
+        setLikeMovie(likeMovie.filter(value => value !== movie.id));
+        window.localStorage.setItem(
+          'likeMovie',
+          JSON.stringify(likeMovie.filter(value => value !== movie.id)),
+        );
+      } else {
+        window.localStorage.setItem(
+          'likeMovie',
+          JSON.stringify([...likeMovie, movie.id]),
+        );
+        setLikeMovie([...likeMovie, movie.id]);
+      }
     } else {
       setLikeMovie([movie.id]);
       window.localStorage.setItem('likeMovie', JSON.stringify([movie.id]));

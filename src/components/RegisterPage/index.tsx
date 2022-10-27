@@ -3,6 +3,7 @@ import { css } from '@emotion/react';
 import * as I from 'assets/svg';
 import { FieldErrors, useForm } from 'react-hook-form';
 import { useRouter } from 'next/router';
+import { setUserLocalstorage } from 'hooks/setUserLocalstorage';
 
 interface RegisterForm {
   name: string;
@@ -20,12 +21,10 @@ const RegisterPage = () => {
   const { push } = useRouter();
 
   const onValid = ({ name, year, month, date }: RegisterForm) => {
-    console.log('로컬스토리지에 저장');
-
-    window.localStorage.setItem('name', name);
-    window.localStorage.setItem('year', year);
-    window.localStorage.setItem('month', month);
-    window.localStorage.setItem('date', date);
+    setUserLocalstorage('name', name);
+    setUserLocalstorage('year', year);
+    setUserLocalstorage('month', month);
+    setUserLocalstorage('date', date);
     push('/');
   };
 

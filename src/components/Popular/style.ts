@@ -53,8 +53,20 @@ export const BestIcon = styled.div`
   border-bottom-left-radius: 16px;
 `;
 
+export const Number = styled.div`
+  position: absolute;
+  width: 19px;
+  height: 38px;
+  left: 16px;
+  top: 16px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 32px;
+  color: #ffffff;
+  text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
+`;
+
 export const InfoSection = styled.div`
-  /* display: flex; */
   flex: 1;
 
   hr {
@@ -81,4 +93,8 @@ export const BestOverview = styled.p`
 export const ListSection = styled.div`
   display: flex;
   justify-content: space-between;
+`;
+
+export const Movie = styled.div`
+  position: relative;
 `;

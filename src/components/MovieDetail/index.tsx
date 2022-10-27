@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import { MovieDetailType } from 'types/MovieDetail';
+import * as S from './style';
 
 interface DetailProps {
   movie: MovieDetailType | undefined;
@@ -7,18 +8,22 @@ interface DetailProps {
 
 const MovieDetail = ({ movie }: DetailProps) => {
   return (
-    <div>
-      <p>{movie?.title}</p>
-      <p>{movie?.release_date}</p>
+    <S.MovieSection>
       <Image
         src={`https://image.tmdb.org/t/p/w500${movie?.poster_path}`}
         alt=""
-        width={120}
-        height={120}
+        width={350}
+        height={510}
       />
-      <a href={movie?.homepage}>{movie?.homepage}</a>
-      <p>{movie?.overview}</p>
-    </div>
+      <div>
+        <S.Title>{movie?.title}</S.Title>
+        <S.TextSection>
+          <S.SubTitle>개봉일</S.SubTitle>
+          <S.MovieInfoText>{movie?.release_date}</S.MovieInfoText>
+        </S.TextSection>
+        <a href={movie?.homepage}>{movie?.homepage}</a>
+      </div>
+    </S.MovieSection>
   );
 };
 

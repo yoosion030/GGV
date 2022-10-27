@@ -9,6 +9,7 @@ export const Background = styled.div`
   backdrop-filter: blur(40px);
   background-repeat: no-repeat;
   padding: 180px 9.7vw 0;
+  overflow-x: hidden;
 
   img {
     border-radius: 16px;
@@ -93,6 +94,21 @@ export const BestOverview = styled.p`
 export const ListSection = styled.div`
   display: flex;
   justify-content: space-between;
+
+  animation-duration: 1s;
+  animation-name: slidein;
+
+  @keyframes slidein {
+    from {
+      margin-left: 100%;
+      width: 300%;
+    }
+
+    to {
+      margin-left: 0%;
+      width: 100%;
+    }
+  }
 `;
 
 export const Movie = styled.div`

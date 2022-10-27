@@ -25,6 +25,9 @@ export const MovieInfo = styled.a`
 
 export const Title = styled.p`
   font-size: 24px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 `;
 
 export const Overview = styled.p`

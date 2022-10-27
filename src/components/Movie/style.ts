@@ -4,8 +4,12 @@ export const Movie = styled.div`
   position: relative;
   width: 350px;
   height: 576px;
+
   img {
-    border-radius: 16px;
+    transition: all 0.1s linear;
+    &:hover {
+      transform: scale(1.1);
+    }
   }
 `;
 

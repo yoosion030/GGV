@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 
 export const MainSection = styled.div`
-  padding: 100px 200px;
+  padding: 100px 9.7vw;
   background-color: #1a1919;
 `;
 

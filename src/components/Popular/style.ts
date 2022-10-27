@@ -8,7 +8,7 @@ export const Background = styled.div`
   background-size: cover;
   backdrop-filter: blur(40px);
   background-repeat: no-repeat;
-  padding: 180px 200px 0;
+  padding: 180px 9.7vw 0;
 
   img {
     border-radius: 16px;

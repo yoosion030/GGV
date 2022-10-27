@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 
 export const UserSection = styled.div`
   width: 100%;
-  padding: 144px 200px;
+  padding: 144px 9.7vw;
 `;
 
 export const Title = styled.h1`

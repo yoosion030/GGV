@@ -8,7 +8,7 @@ export const Header = styled.header`
   box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.25);
   backdrop-filter: blur(13.5px);
   z-index: 5;
-  padding: 0 200px;
+  padding: 0 9.7vw;
   font-family: 'GmarketSansLight';
   a {
     color: #ffffff;
@@ -30,7 +30,7 @@ export const Nav = styled.nav`
 
 export const NavWrapper = styled.div`
   display: flex;
-  gap: 48px;
+  gap: 2.3vw;
 `;
 
 export const Logo = styled.div`

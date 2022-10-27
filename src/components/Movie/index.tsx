@@ -23,6 +23,7 @@ const Movie = ({ movie }: MovieProps) => {
    * 값이 없다면 return
    */
   useEffect(() => {
+    console.log(movie.id);
     const result = window.localStorage.getItem('likeMovie');
     if (result !== null) {
       setIsLike(result.includes(movie.id.toString()));

@@ -14,11 +14,7 @@ const DetailPage = ({ data }: DetailDataType) => {
   return (
     <>
       <Header />
-      <S.Background
-        css={css`
-          background-image: url('https://image.tmdb.org/t/p/w500${movie?.poster_path}');
-        `}
-      >
+      <S.DetailSection>
         <MovieDetail movie={movie} />
         <S.SimilarSection>
           <S.SimilarTitle>비슷한 영화</S.SimilarTitle>
@@ -27,7 +23,12 @@ const DetailPage = ({ data }: DetailDataType) => {
           </S.SimilarMovieSection>
         </S.SimilarSection>
         <S.Blur />
-      </S.Background>
+        <S.BackgroundImage
+          css={css`
+            background-image: url('https://image.tmdb.org/t/p/w500${movie?.poster_path}');
+          `}
+        />
+      </S.DetailSection>
     </>
   );
 };

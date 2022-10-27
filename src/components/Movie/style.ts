@@ -5,11 +5,12 @@ export const Movie = styled.div`
   width: 350px;
   height: 576px;
 
+  &:hover img {
+    transform: scale(1.1);
+  }
+
   img {
     transition: all 0.1s linear;
-    &:hover {
-      transform: scale(1.1);
-    }
   }
 `;
 

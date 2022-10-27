@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 
 export const MainSection = styled.div`
   padding: 100px 200px;
-  background-color: #1a1919; ;
+  background-color: #1a1919;
 `;
 
 export const MainTitle = styled.h1`

@@ -12,6 +12,7 @@ const UserPage = () => {
     setName(window.localStorage.getItem('name'));
     const result = window.localStorage.getItem('likeMovie');
     if (result !== null) {
+      // 로컬스토리지에 저장된 아이디 배열 가져오기
       setLikeMovie(JSON.parse(result));
     }
   }, []);

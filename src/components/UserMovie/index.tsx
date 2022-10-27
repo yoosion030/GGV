@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { useRecoilState } from 'recoil';
 import { LikeMovie } from 'atoms';
 import * as I from 'assets/svg';
+import { setLocalstorage } from 'hooks/setLocalstorage';
 
 interface UserMovieProps {
   id: number;
@@ -13,7 +14,11 @@ interface UserMovieProps {
 
 const UserMovie = ({ id }: UserMovieProps) => {
   const [isLike, setIsLike] = useState(false);
-  const [movie, setMovie] = useState<MovieDetailType>();
+  const [movie, setMovie] = useState<MovieDetailType>(); // prop으로 받아온 id의 영화
+  const [likeMovie, setLikeMovie] = useRecoilState(LikeMovie); // 좋아요 누른 영화 id의 배열
+  /**
+   * prop으로 넘어온 id의 영화 데이터 구하기
+   */
   const getData = async () => {
     try {
       const { data }: DetailDataType = await axios.get(
@@ -24,29 +29,33 @@ const UserMovie = ({ id }: UserMovieProps) => {
       console.log(e);
     }
   };
-  const [likeMovie, setLikeMovie] = useRecoilState(LikeMovie);
+
+  /**
+   * 좋아요 버튼 눌렀을 때 실행시키는 함수
+   */
   const handleLike = () => {
     setIsLike(!isLike);
 
     if (movie) {
+      // movie 데이터가 있고
       if (likeMovie) {
+        // 저장한 영화가 이미 있고
         if (likeMovie.includes(movie.id)) {
-          console.log(likeMovie);
+          // 중복된 영화를 저장했을 때 (삭제)
+          setLocalstorage(
+            'likeMovie',
+            likeMovie.filter(value => value !== movie.id),
+          );
           setLikeMovie(likeMovie.filter(value => value !== movie.id));
-          window.localStorage.setItem(
-            'likeMovie',
-            JSON.stringify(likeMovie.filter(value => value !== movie.id)),
-          );
         } else {
-          window.localStorage.setItem(
-            'likeMovie',
-            JSON.stringify([...likeMovie, movie.id]),
-          );
+          // 중복되지 않은 영화를 저장했을 때 (추가)
+          setLocalstorage('likeMovie', [...likeMovie, movie.id]);
           setLikeMovie([...likeMovie, movie.id]);
         }
       } else {
+        // 저장한 영화가 없을 때 실행
+        setLocalstorage('likeMovie', [movie.id]);
         setLikeMovie([movie.id]);
-        window.localStorage.setItem('likeMovie', JSON.stringify([movie.id]));
       }
     }
   };

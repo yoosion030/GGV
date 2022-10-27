@@ -27,9 +27,10 @@ const UserPage = () => {
           <S.InfoText>저장한 영화가 없습니다.</S.InfoText>
         ) : (
           <S.MovieSection>
-            {likeMovie?.map((id, i) => (
-              <UserMovie id={id} key={i} />
-            ))}
+            {/* likeMovie에 id가 있다면 UserMovie 컴포넌트 보여주기 */}
+            {likeMovie?.map(
+              id => likeMovie.includes(id) && <UserMovie id={id} key={id} />,
+            )}
           </S.MovieSection>
         )}
       </S.UserSection>

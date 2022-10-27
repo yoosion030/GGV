@@ -1,10 +1,11 @@
 import Image from 'next/image';
 import { MovieType } from 'types/Movie';
-import * as S from 'shared/styles/Movie';
+import * as S from './style';
 import * as I from 'assets/svg';
 import { useEffect, useState } from 'react';
 import { useRecoilState } from 'recoil';
 import { LikeMovie } from 'atoms';
+import { setLocalstorage } from 'hooks/setLocalstorage';
 
 interface MovieProps {
   movie: MovieType;
@@ -37,23 +38,20 @@ const Movie = ({ movie }: MovieProps) => {
       // 저장한 영화가 이미 있고
       if (likeMovie.includes(movie.id)) {
         // 중복된 영화를 저장했을 때 (삭제)
-        setLikeMovie(likeMovie.filter(value => value !== movie.id));
-        window.localStorage.setItem(
+        setLocalstorage(
           'likeMovie',
-          JSON.stringify(likeMovie.filter(value => value !== movie.id)),
+          likeMovie.filter(value => value !== movie.id),
         );
+        setLikeMovie(likeMovie.filter(value => value !== movie.id));
       } else {
         // 중복되지 않은 영화를 저장했을 때 (추가)
+        setLocalstorage('likeMovie', [...likeMovie, movie.id]);
         setLikeMovie([...likeMovie, movie.id]);
-        window.localStorage.setItem(
-          'likeMovie',
-          JSON.stringify([...likeMovie, movie.id]),
-        );
       }
     } else {
       // 저장한 영화가 없을 때 실행
+      setLocalstorage('likeMovie', [movie.id]);
       setLikeMovie([movie.id]);
-      window.localStorage.setItem('likeMovie', JSON.stringify([movie.id]));
     }
   };
 

@@ -64,7 +64,7 @@ const Movie = ({ movie }: MovieProps) => {
 
   return (
     <S.Movie>
-      <S.MovieInfo href={`movie/${movie.id}`}>
+      <S.MovieInfo href={`/movie/${movie.id}`}>
         <div
           css={css`
             border-radius: 16px;

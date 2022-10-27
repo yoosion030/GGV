@@ -1,6 +1,6 @@
 import { keyframes } from '@emotion/react';
 
-export const shake = keyframes`
+export const shakeAnimation = keyframes`
  0% {
     transform: translate(1px, 0px);
   }
@@ -34,4 +34,20 @@ export const shake = keyframes`
   100% {
     transform: translate(1px, 0px);
   }            
+`;
+
+export const likeButtonAnimation = keyframes`
+  0% {
+    transform: scale(1);
+  }
+  25% {
+    transform: scale(1.2);
+  }
+
+  50% {
+    transform: scale(.95);
+  }
+  100% {
+    transform: scale(1);
+  }
 `;

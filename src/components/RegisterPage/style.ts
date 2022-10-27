@@ -1,7 +1,7 @@
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { FieldError } from 'react-hook-form';
-import { shake } from 'shared/styles/Animation';
+import { shakeAnimation } from 'shared/styles/Animation';
 
 export const RegisterBackground = styled.div`
   width: 100vw;
@@ -64,7 +64,7 @@ export const Input = styled.input<ErrorStyleProps>`
   animation: ${({ errorStyle }) =>
     errorStyle &&
     css`
-      ${shake} .5s
+      ${shakeAnimation} .5s
     `};
   &::placeholder {
     color: #808080;

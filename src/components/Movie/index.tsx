@@ -6,6 +6,8 @@ import { useEffect, useState } from 'react';
 import { useRecoilState } from 'recoil';
 import { LikeMovie } from 'atoms';
 import { setLocalstorage } from 'hooks/setLocalstorage';
+import { css } from '@emotion/react';
+import { likeButtonAnimation } from 'shared/styles/Animation';
 
 interface MovieProps {
   movie: MovieType;
@@ -55,6 +57,11 @@ const Movie = ({ movie }: MovieProps) => {
     }
   };
 
+  const handleAnimation = () =>
+    css({
+      animation: `${likeButtonAnimation} .45s`,
+    });
+
   return (
     <S.Movie>
       <S.MovieInfo href={`movie/${movie.id}`}>
@@ -68,7 +75,13 @@ const Movie = ({ movie }: MovieProps) => {
         <S.Overview>{movie.overview}</S.Overview>
       </S.MovieInfo>
       <S.LikeButton onClick={handleLike}>
-        {isLike ? <I.PinkLikeIcon /> : <I.LikeIcon />}
+        {isLike ? (
+          <div css={handleAnimation}>
+            <I.PinkLikeIcon />
+          </div>
+        ) : (
+          <I.LikeIcon />
+        )}
       </S.LikeButton>
     </S.Movie>
   );

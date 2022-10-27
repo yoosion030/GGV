@@ -29,8 +29,22 @@ export const Blur = styled.div`
 `;
 
 export const PopularSection = styled.div`
+  overflow: hidden;
   display: flex;
   gap: 40px;
+
+  animation-duration: 1s;
+  animation-name: slidedown;
+
+  @keyframes slidedown {
+    from {
+      margin-top: 100%;
+    }
+
+    to {
+      margin-top: 0%;
+    }
+  }
 `;
 
 export const BestPoster = styled.div`

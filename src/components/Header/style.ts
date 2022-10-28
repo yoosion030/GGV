@@ -28,6 +28,10 @@ export const Nav = styled.nav`
   height: 100%;
 `;
 
+export const LogoWrapper = styled.div`
+  cursor: pointer;
+`;
+
 export const NavWrapper = styled.div`
   display: flex;
   gap: 2.3vw;

@@ -1,16 +1,27 @@
 import type { GetServerSideProps, NextPage } from 'next';
-import { MainPage } from 'components';
+import { MainPage, RegisterPage } from 'components';
 import axios from 'axios';
 import { MovieDataType } from 'types/Movie';
 import Head from 'next/head';
+import { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
 
 const Home: NextPage<MovieDataType> = ({ data }) => {
+  const [name, setName] = useState<string>();
+  const { push } = useRouter();
+
+  useEffect(() => {
+    const name = localStorage.getItem('name');
+    if (!name) push('/register');
+    else setName(name);
+  }, []);
+
   return (
     <>
       <Head>
         <title>GGV</title>
       </Head>
-      <MainPage data={data} />
+      {name ? <MainPage data={data} /> : <RegisterPage />}
     </>
   );
 };

@@ -62,6 +62,10 @@ const RegisterPage = () => {
               placeholder="YYYY"
               {...register('year', {
                 required: true,
+                pattern: {
+                  value: /^[0-9]{4}$/,
+                  message: '4자리 숫자만 입력할 수 있습니다.',
+                },
               })}
               errorStyle={errors.year}
             />
@@ -72,6 +76,10 @@ const RegisterPage = () => {
               placeholder="MM"
               {...register('month', {
                 required: true,
+                pattern: {
+                  value: /^[0-1][0-9]$/,
+                  message: '2자리 숫자만 입력할 수 있습니다.',
+                },
               })}
               errorStyle={errors.month}
             />
@@ -82,6 +90,10 @@ const RegisterPage = () => {
               placeholder="DD"
               {...register('date', {
                 required: true,
+                pattern: {
+                  value: /^[0-3][0-9]$/,
+                  message: '2자리 숫자만 입력할 수 있습니다.',
+                },
               })}
               errorStyle={errors.date}
             />

@@ -13,7 +13,6 @@ export const Background = styled.div`
 
   img {
     border-radius: 16px;
-    cursor: pointer;
   }
 `;
 

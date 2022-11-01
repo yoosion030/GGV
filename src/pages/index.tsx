@@ -21,7 +21,7 @@ const Home: NextPage<MovieDataType> = ({ data }) => {
       <Head>
         <title>GGV</title>
       </Head>
-      {name ? <MainPage data={data} /> : <RegisterPage />}
+      {name && <MainPage data={data} />}
     </>
   );
 };

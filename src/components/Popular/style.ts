@@ -46,7 +46,7 @@ export const PopularSection = styled.div`
   }
 `;
 
-export const BestPoster = styled.div`
+export const BestPoster = styled.a`
   width: 487px;
   position: relative;
 `;
@@ -65,6 +65,7 @@ export const BestIcon = styled.div`
   text-align: center;
   border-top-right-radius: 16px;
   border-bottom-left-radius: 16px;
+  color: #ffffff;
 `;
 
 export const Number = styled.div`
@@ -99,6 +100,10 @@ export const BestTitle = styled.h1`
   color: #ffffff;
 `;
 
+export const Movie = styled.a`
+  position: relative;
+`;
+
 export const BestOverview = styled.p`
   color: #d0d0d0;
   height: 207px;
@@ -122,8 +127,4 @@ export const ListSection = styled.div`
       width: 100%;
     }
   }
-`;
-
-export const Movie = styled.div`
-  position: relative;
 `;

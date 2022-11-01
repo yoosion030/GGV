@@ -12,7 +12,7 @@ const Popular = ({ movie }: MovieProps) => {
       <S.Blur />
       {movie && (
         <S.PopularSection>
-          <S.BestPoster>
+          <S.BestPoster href={`/movie/${movie[0].id}`}>
             <Image
               src={`https://image.tmdb.org/t/p/w500${movie[0].poster_path}`}
               width={487}
@@ -27,7 +27,7 @@ const Popular = ({ movie }: MovieProps) => {
             <hr />
             <S.BestOverview>{movie[0].overview}</S.BestOverview>
             <S.ListSection>
-              <S.Movie>
+              <S.Movie href={`/movie/${movie[1].id}`}>
                 <Image
                   src={`https://image.tmdb.org/t/p/w500${movie[1].poster_path}`}
                   width={310}
@@ -36,7 +36,7 @@ const Popular = ({ movie }: MovieProps) => {
                 />
                 <S.Number>2</S.Number>
               </S.Movie>
-              <S.Movie>
+              <S.Movie href={`/movie/${movie[2].id}`}>
                 <Image
                   src={`https://image.tmdb.org/t/p/w500${movie[2].poster_path}`}
                   width={310}
@@ -45,7 +45,7 @@ const Popular = ({ movie }: MovieProps) => {
                 />
                 <S.Number>3</S.Number>
               </S.Movie>
-              <S.Movie>
+              <S.Movie href={`/movie/${movie[3].id}`}>
                 <Image
                   src={`https://image.tmdb.org/t/p/w500${movie[3].poster_path}`}
                   width={310}

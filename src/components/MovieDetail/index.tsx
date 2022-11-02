@@ -11,6 +11,7 @@ interface DetailProps {
 
 const MovieDetail = ({ movie }: DetailProps) => {
   const [overview, setOverview] = useState();
+
   const getData = async () => {
     // 번역본 줄거리 가져오기
     try {

@@ -11,3 +11,12 @@ export interface MovieType {
   release_date: string;
   overview: string;
 }
+
+export interface MovieDataPropsType {
+  playing: {
+    results: MovieType[];
+  };
+  upcoming: {
+    results: MovieType[];
+  };
+}

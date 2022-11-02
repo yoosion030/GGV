@@ -1,23 +1,29 @@
 import { Movie } from 'components';
 import { useEffect, useState } from 'react';
-import { MovieDataType, MovieType } from 'types/Movie';
+import { MovieDataPropsType, MovieType } from 'types/Movie';
 import { Header, Popular } from 'components';
 import * as S from './style';
 
-const MainPage = ({ data }: MovieDataType) => {
-  const [movies, setMovies] = useState<MovieType[]>();
-  useEffect(() => {
-    setMovies(data?.results);
-  }, []);
+const MainPage = ({ playing, upcoming }: MovieDataPropsType) => {
+  const [playingMovies, setPlayingMovies] = useState<MovieType[]>(
+    playing.results,
+  );
+  const [upcomingMovies, setUpcomingMovies] = useState<MovieType[]>(
+    upcoming.results,
+  );
+  const [select, setSelect] = useState();
 
   return (
     <>
       <Header />
-      <Popular movie={movies} />
+      <Popular movie={playingMovies} />
       <S.MainSection>
-        <S.MainTitle>영화 리스트</S.MainTitle>
+        <S.ToggleSection>
+          <S.MainTitle>상영중인 영화</S.MainTitle>
+          <S.MainTitle>상영예정인 영화</S.MainTitle>
+        </S.ToggleSection>
         <S.MovieSection>
-          {movies?.map(movie => (
+          {upcomingMovies?.map(movie => (
             <Movie key={movie.id} movie={movie} />
           ))}
         </S.MovieSection>

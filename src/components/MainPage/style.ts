@@ -5,6 +5,10 @@ export const MainSection = styled.div`
   background-color: #1a1919;
 `;
 
+export const ToggleSection = styled.div`
+  display: flex;
+`;
+
 export const MainTitle = styled.h1`
   font-weight: 700;
   font-size: 32px;

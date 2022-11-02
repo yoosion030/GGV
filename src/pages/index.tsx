@@ -1,11 +1,11 @@
 import type { GetServerSideProps, NextPage } from 'next';
 import { MainPage } from 'components';
 import axios from 'axios';
-import { MovieDataType } from 'types/Movie';
+import { MovieDataPropsType, MovieDataType } from 'types/Movie';
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 
-const Home: NextPage<MovieDataType> = ({ data }) => {
+const Home: NextPage<MovieDataPropsType> = ({ playing, upcoming }) => {
   const { push } = useRouter();
 
   useEffect(() => {
@@ -13,17 +13,22 @@ const Home: NextPage<MovieDataType> = ({ data }) => {
     if (!name) push('/register');
   }, []);
 
-  return <MainPage data={data} />;
+  return <MainPage playing={playing} upcoming={upcoming} />;
 };
 
 export const getServerSideProps: GetServerSideProps = async () => {
   try {
-    const { data }: MovieDataType = await axios.get(
+    const playing: MovieDataType = await axios.get(
       `https://api.themoviedb.org/3/movie/now_playing/?api_key=${process.env.API_KEY}`,
     );
+    const upcoming: MovieDataType = await axios.get(
+      `https://api.themoviedb.org/3/movie/upcoming/?api_key=${process.env.API_KEY}`,
+    );
+
     return {
       props: {
-        data,
+        playing: playing.data,
+        upcoming: upcoming.data,
       },
     };
   } catch (e) {

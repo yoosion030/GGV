@@ -15,8 +15,6 @@ export const ToggleButton = styled.div<SelectType>`
       : 'linear-gradient(241.68deg, #63FCBB 17.51%, #54EDC8 100%)'};
   border-radius: 30px;
   cursor: pointer;
-
-  transition: 2s;
   padding: 0 4px;
 `;
 

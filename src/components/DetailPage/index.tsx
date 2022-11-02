@@ -5,11 +5,7 @@ import { DetailDataType, MovieDetailType } from 'types/MovieDetail';
 import * as S from './style';
 
 const DetailPage = ({ data }: DetailDataType) => {
-  const [movie, setMovie] = useState<MovieDetailType>();
-
-  useEffect(() => {
-    setMovie(data);
-  }, []);
+  const [movie, setMovie] = useState<MovieDetailType>(data);
 
   return (
     <>

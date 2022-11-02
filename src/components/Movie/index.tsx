@@ -4,7 +4,7 @@ import * as S from './style';
 import * as I from 'assets/svg';
 import { useEffect, useState } from 'react';
 import { useRecoilState } from 'recoil';
-import { LikeMovie } from 'atoms';
+import { LikeMovie, Select } from 'atoms';
 import { setLocalstorage } from 'hooks/setLocalstorage';
 import { css } from '@emotion/react';
 import { likeButtonAnimation } from 'shared/styles/Animation';
@@ -16,7 +16,6 @@ interface MovieProps {
 const Movie = ({ movie }: MovieProps) => {
   const [isLike, setIsLike] = useState(false); // 좋아요 관리
   const [likeMovie, setLikeMovie] = useRecoilState(LikeMovie); // 좋아요 누른 영화 아이디 배열
-
   /**
    * 페이지 첫 렌더링 시 로컬스토리지에 저장된 likeMovie를 가져와 초기값 설정
    * likeMovie 아이디 값에 현재 movie.id 값이 있다면 좋아요 설정

@@ -10,3 +10,4 @@ export { default as Header } from './Header';
 export { default as Popular } from './Popular';
 export { default as UserMovie } from './UserMovie';
 export { default as SimilarMovie } from './SimilarMovie';
+export { default as Toggle } from './Toggle';

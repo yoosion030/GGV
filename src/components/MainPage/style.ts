@@ -7,6 +7,7 @@ export const MainSection = styled.div`
 
 export const ToggleSection = styled.div`
   display: flex;
+  gap: 24px;
 `;
 
 export const MainTitle = styled.h1`
@@ -15,6 +16,7 @@ export const MainTitle = styled.h1`
   line-height: 38px;
   color: #ffffff;
   margin-bottom: 24px;
+  cursor: pointer;
 `;
 
 export const MovieSection = styled.div`

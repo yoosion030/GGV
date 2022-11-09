@@ -5,6 +5,7 @@ export const Movie = styled.div`
   width: 350px;
   height: 576px;
 
+
   &:hover img {
     transform: scale(1.1);
   }

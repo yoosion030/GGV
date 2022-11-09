@@ -8,7 +8,7 @@ import { css } from '@emotion/react';
 
 const MainPage = ({ playing, upcoming }: MovieDataPropsType) => {
   const [playingMovies] = useState<MovieType[]>(playing.results);
-  const [upcomingMovies] = useState<MovieType[]>(upcoming.results);
+  const [upcomingMovies] = useState<MovieType[]>(upcoming.results.reverse());
   const [select, setSelect] = useRecoilState(Select);
   const handleSelectStyle = (selectname: 'playing' | 'upcoming') =>
     selectname !== select &&

@@ -2,9 +2,6 @@ import { useState } from 'react';
 import { MovieType } from 'types/Movie';
 import { Header, Popular, Toggle, Movie } from 'components';
 import * as S from './style';
-import { useRecoilState } from 'recoil';
-import { Select } from 'atoms';
-import { css } from '@emotion/react';
 
 interface MovieDataPropsType {
   popular: {
@@ -14,15 +11,6 @@ interface MovieDataPropsType {
 
 const MainPage = ({ popular }: MovieDataPropsType) => {
   const [popularMovies] = useState<MovieType[]>(popular.results);
-  const [select, setSelect] = useRecoilState(Select);
-  const handleSelectStyle = (selectname: 'playing' | 'upcoming') =>
-    selectname !== select &&
-    css({
-      color: '#8D8D8D',
-      transition: '500ms',
-    });
-
-  console.log(popular.results.filter(val => val.genre_ids[0] === 27));
 
   const actionMovies: MovieType[] = popular.results.filter(val =>
     val.genre_ids.includes(28),
@@ -48,57 +36,72 @@ const MainPage = ({ popular }: MovieDataPropsType) => {
       <Header />
       <Popular movie={popularMovies} />
       <S.MainSection>
-        <S.ToggleSection>
-          <S.MainTitle
-            onClick={() => setSelect('playing')}
-            css={handleSelectStyle('playing')}
-          >
-            상영중인 영화
-          </S.MainTitle>
-          <Toggle />
-          <S.MainTitle
-            onClick={() => setSelect('upcoming')}
-            css={handleSelectStyle('upcoming')}
-          >
-            상영예정인 영화
-          </S.MainTitle>
-        </S.ToggleSection>
         <S.MovieSection>
-          <S.ScrollSection>
-            {actionMovies?.map(movie => (
-              <Movie key={movie.id} movie={movie} />
-            ))}
-          </S.ScrollSection>
-          <hr />
-          <S.ScrollSection>
-            {adventureMovies?.map(movie => (
-              <Movie key={movie.id} movie={movie} />
-            ))}
-          </S.ScrollSection>
-          <hr />
-          <S.ScrollSection>
-            {animationMovies?.map(movie => (
-              <Movie key={movie.id} movie={movie} />
-            ))}
-          </S.ScrollSection>
-          <hr />
-          <S.ScrollSection>
-            {comedyMovies?.map(movie => (
-              <Movie key={movie.id} movie={movie} />
-            ))}
-          </S.ScrollSection>
-          <hr />
-          <S.ScrollSection>
-            {romanceMovies?.map(movie => (
-              <Movie key={movie.id} movie={movie} />
-            ))}
-          </S.ScrollSection>
-          <hr />
-          <S.ScrollSection>
-            {horrorMovies?.map(movie => (
-              <Movie key={movie.id} movie={movie} />
-            ))}
-          </S.ScrollSection>
+          {actionMovies.length !== 0 && (
+            <>
+              <S.MainTitle>액션 영화</S.MainTitle>
+              <S.ScrollSection>
+                {actionMovies?.map(movie => (
+                  <Movie key={movie.id} movie={movie} />
+                ))}
+              </S.ScrollSection>
+            </>
+          )}
+
+          {adventureMovies.length !== 0 && (
+            <>
+              <S.MainTitle>어드벤쳐 영화</S.MainTitle>
+              <S.ScrollSection>
+                {adventureMovies?.map(movie => (
+                  <Movie key={movie.id} movie={movie} />
+                ))}
+              </S.ScrollSection>
+            </>
+          )}
+
+          {animationMovies.length !== 0 && (
+            <>
+              <S.MainTitle>애니메이션 영화</S.MainTitle>
+              <S.ScrollSection>
+                {animationMovies?.map(movie => (
+                  <Movie key={movie.id} movie={movie} />
+                ))}
+              </S.ScrollSection>
+            </>
+          )}
+
+          {comedyMovies.length !== 0 && (
+            <>
+              <S.MainTitle>코미디 영화</S.MainTitle>
+              <S.ScrollSection>
+                {comedyMovies?.map(movie => (
+                  <Movie key={movie.id} movie={movie} />
+                ))}
+              </S.ScrollSection>
+            </>
+          )}
+
+          {romanceMovies.length !== 0 && (
+            <>
+              <S.MainTitle>로맨스 영화</S.MainTitle>
+              <S.ScrollSection>
+                {romanceMovies?.map(movie => (
+                  <Movie key={movie.id} movie={movie} />
+                ))}
+              </S.ScrollSection>
+            </>
+          )}
+
+          {horrorMovies.length !== 0 && (
+            <>
+              <S.MainTitle>호러 영화</S.MainTitle>
+              <S.ScrollSection>
+                {horrorMovies?.map(movie => (
+                  <Movie key={movie.id} movie={movie} />
+                ))}
+              </S.ScrollSection>
+            </>
+          )}
         </S.MovieSection>
       </S.MainSection>
     </>

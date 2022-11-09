@@ -32,11 +32,12 @@ export const MainTitle = styled.h1`
 
 export const ScrollSection = styled.div`
   display: flex;
-  width: 100vw;
+  width: 100%;
   overflow-y: scroll;
   gap: 40px;
   height: 100%;
   margin-bottom: 112px;
+  padding-right: 100px;
 
   &::-webkit-scrollbar {
     display: none;

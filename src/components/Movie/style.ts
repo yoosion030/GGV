@@ -5,7 +5,6 @@ export const Movie = styled.div`
   width: 350px;
   height: 576px;
 
-
   &:hover img {
     transform: scale(1.1);
   }
@@ -17,7 +16,7 @@ export const Movie = styled.div`
 
 export const MovieInfo = styled.a`
   height: 100%;
-  width: 100%;
+  width: 350px;
   color: #ffffff;
   display: inline-flex;
   flex-direction: column;
@@ -33,6 +32,7 @@ export const Title = styled.p`
 
 export const Overview = styled.p`
   width: 100%;
+  height: 60px;
   line-height: 20px;
   overflow: hidden;
   text-overflow: ellipsis;

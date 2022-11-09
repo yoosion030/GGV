@@ -3,7 +3,17 @@ import styled from '@emotion/styled';
 export const MainSection = styled.div`
   padding: 100px 9.7vw;
   background-color: #1a1919;
-  width: 100vw;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+`;
+
+export const MovieSection = styled.div`
+  overflow: hidden;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
 export const ToggleSection = styled.div`
@@ -20,19 +30,15 @@ export const MainTitle = styled.h1`
   cursor: pointer;
 `;
 
-export const MovieSection = styled.div`
-  overflow: hidden;
-`;
-
 export const ScrollSection = styled.div`
   display: flex;
   width: 100vw;
   overflow-y: scroll;
   gap: 40px;
-
   height: 100%;
+  margin-bottom: 112px;
 
-  div {
-    width: 350px;
+  &::-webkit-scrollbar {
+    display: none;
   }
 `;

@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import { DetailDataType, MovieDetailType } from 'types/MovieDetail';
+import { MovieDetailDataType, MovieDetailType } from 'types/MovieDetail';
 import { Movie } from 'components';
 
 interface UserMovieProps {
@@ -15,7 +15,7 @@ const UserMovie = ({ id }: UserMovieProps) => {
    */
   const getData = async () => {
     try {
-      const { data }: DetailDataType = await axios.get(
+      const { data }: MovieDetailDataType = await axios.get(
         `https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.API_KEY}`,
       );
       setMovie(data);

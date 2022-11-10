@@ -49,7 +49,7 @@ export const InputTitle = styled.p`
 `;
 
 interface ErrorStyleProps {
-  errorStyle?: FieldError | undefined;
+  errorStyle?: FieldError;
 }
 
 export const Input = styled.input<ErrorStyleProps>`

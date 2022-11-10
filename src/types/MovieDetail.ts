@@ -1,4 +1,4 @@
-export interface DetailDataType {
+export interface MovieDetailDataType {
   data: MovieDetailType;
 }
 

@@ -1,2 +1,3 @@
-export const getLocalStorage = (key: string) =>
-  window.localStorage.getItem(key);
+export const getLocalstorage = (key: string) => window.localStorage.getItem(key);
+
+

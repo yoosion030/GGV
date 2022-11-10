@@ -3,7 +3,7 @@ import { css } from '@emotion/react';
 import * as I from 'assets/svg';
 import { FieldErrors, useForm } from 'react-hook-form';
 import { useRouter } from 'next/router';
-import { setUserLocalstorage } from 'hooks/setUserLocalstorage';
+import { setUserLocalstorage } from 'hooks';
 
 interface RegisterForm {
   name: string;

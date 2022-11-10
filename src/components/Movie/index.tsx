@@ -5,17 +5,16 @@ import * as I from 'assets/svg';
 import { useEffect, useState } from 'react';
 import { useRecoilState } from 'recoil';
 import { LikeMovie } from 'atoms';
-import { setLocalstorage } from 'hooks/setLocalstorage';
 import { css } from '@emotion/react';
 import { likeButtonAnimation } from 'shared/styles/Animation';
-import { getLocalStorage } from 'hooks/getLocalstorage';
+import { getLocalstorage, setLocalstorage } from 'hooks';
 
 interface MovieProps {
   movie: MovieType;
 }
 
 const Movie = ({ movie }: MovieProps) => {
-  const [isLike, setIsLike] = useState(false); // 좋아요 관리
+  const [isLike, setIsLike] = useState<boolean>(false); // 좋아요 관리
   const [likeMovie, setLikeMovie] = useRecoilState(LikeMovie); // 좋아요 누른 영화 아이디 배열
   /**
    * 페이지 첫 렌더링 시 로컬스토리지에 저장된 likeMovie를 가져와 초기값 설정
@@ -24,18 +23,13 @@ const Movie = ({ movie }: MovieProps) => {
    */
   const [user, setUser] = useState<string>();
   useEffect(() => {
-    const name = getLocalStorage('name');
-    const year = getLocalStorage('year');
-    const month = getLocalStorage('month');
-    const date = getLocalStorage('date');
-
+    // 로컬스토리지에 저장된 유저 정보 가져오기
     const userInfo = ['year', 'month', 'date', 'name']
-      .map(value => getLocalStorage(value))
+      .map(value => getLocalstorage(value))
       .join('');
     setUser(userInfo);
-    console.log(userInfo);
-    const result = userInfo && getLocalStorage(userInfo);
 
+    const result = getLocalstorage(userInfo);
     if (result) {
       setIsLike(result.includes(movie.id.toString()));
       setLikeMovie(JSON.parse(result));
@@ -69,6 +63,9 @@ const Movie = ({ movie }: MovieProps) => {
     }
   };
 
+  /**
+   * 하트 클릭 시 애니메이션
+   */
   const handleAnimation = () =>
     css({
       animation: `${likeButtonAnimation} .45s`,

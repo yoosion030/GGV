@@ -1,6 +1,6 @@
 import { LikeMovie } from 'atoms';
 import { Header, UserMovie } from 'components';
-import { getLocalStorage } from 'hooks/getLocalstorage';
+import { getLocalstorage } from 'hooks';
 import { useEffect, useState } from 'react';
 import { useRecoilState } from 'recoil';
 import * as S from './style';
@@ -11,7 +11,7 @@ const UserPage = () => {
 
   useEffect(() => {
     const userInfo = ['year', 'month', 'date', 'name']
-      .map(value => getLocalStorage(value))
+      .map(value => getLocalstorage(value))
       .join('');
 
     setName(window.localStorage.getItem('name'));

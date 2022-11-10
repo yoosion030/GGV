@@ -8,6 +8,7 @@ import { LikeMovie } from 'atoms';
 import { setLocalstorage } from 'hooks/setLocalstorage';
 import { css } from '@emotion/react';
 import { likeButtonAnimation } from 'shared/styles/Animation';
+import { getLocalStorage } from 'hooks/getLocalstorage';
 
 interface MovieProps {
   movie: MovieType;
@@ -21,9 +22,21 @@ const Movie = ({ movie }: MovieProps) => {
    * likeMovie 아이디 값에 현재 movie.id 값이 있다면 좋아요 설정
    * 값이 없다면 return
    */
+  const [user, setUser] = useState<string>();
   useEffect(() => {
-    const result = window.localStorage.getItem('likeMovie');
-    if (result !== null) {
+    const name = getLocalStorage('name');
+    const year = getLocalStorage('year');
+    const month = getLocalStorage('month');
+    const date = getLocalStorage('date');
+
+    const userInfo = ['year', 'month', 'date', 'name']
+      .map(value => getLocalStorage(value))
+      .join('');
+    setUser(userInfo);
+    console.log(userInfo);
+    const result = userInfo && getLocalStorage(userInfo);
+
+    if (result) {
       setIsLike(result.includes(movie.id.toString()));
       setLikeMovie(JSON.parse(result));
     }
@@ -40,18 +53,18 @@ const Movie = ({ movie }: MovieProps) => {
       if (likeMovie.includes(movie.id)) {
         // 중복된 영화를 저장했을 때 (삭제)
         setLocalstorage(
-          'likeMovie',
+          user,
           likeMovie.filter(value => value !== movie.id),
         );
         setLikeMovie(likeMovie.filter(value => value !== movie.id));
       } else {
         // 중복되지 않은 영화를 저장했을 때 (추가)
-        setLocalstorage('likeMovie', [...likeMovie, movie.id]);
+        setLocalstorage(user, [...likeMovie, movie.id]);
         setLikeMovie([...likeMovie, movie.id]);
       }
     } else {
       // 저장한 영화가 없을 때 실행
-      setLocalstorage('likeMovie', [movie.id]);
+      setLocalstorage(user, [movie.id]);
       setLikeMovie([movie.id]);
     }
   };

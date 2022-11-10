@@ -1,5 +1,6 @@
 import { LikeMovie } from 'atoms';
 import { Header, UserMovie } from 'components';
+import { getLocalStorage } from 'hooks/getLocalstorage';
 import { useEffect, useState } from 'react';
 import { useRecoilState } from 'recoil';
 import * as S from './style';
@@ -9,8 +10,12 @@ const UserPage = () => {
   const [likeMovie, setLikeMovie] = useRecoilState(LikeMovie);
 
   useEffect(() => {
+    const userInfo = ['year', 'month', 'date', 'name']
+      .map(value => getLocalStorage(value))
+      .join('');
+
     setName(window.localStorage.getItem('name'));
-    const result = window.localStorage.getItem('likeMovie');
+    const result = window.localStorage.getItem(userInfo);
     if (result !== null) {
       // 로컬스토리지에 저장된 아이디 배열 가져오기
       setLikeMovie(JSON.parse(result));

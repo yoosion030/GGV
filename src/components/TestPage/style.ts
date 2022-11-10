@@ -37,7 +37,7 @@ export const ScrollSection = styled.div`
   gap: 40px;
   height: 100%;
   margin-bottom: 112px;
-  padding-right: 100px;
+  padding-right: 120px;
 
   &::-webkit-scrollbar {
     display: none;

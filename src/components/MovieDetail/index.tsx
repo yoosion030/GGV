@@ -55,7 +55,9 @@ const MovieDetail = ({ movie }: DetailProps) => {
           height={510}
         />
         <S.TextSection>
-          <S.Title>{movie?.title}</S.Title>
+          <S.Title>
+            {movie?.title} ({KRData?.title})
+          </S.Title>
           <S.InfoSection>
             <div>
               {list.map((item, i) => (

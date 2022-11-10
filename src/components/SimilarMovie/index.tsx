@@ -19,7 +19,6 @@ const SimilarMovie = ({ id }: UserMovieProps) => {
         `https://api.themoviedb.org/3/movie/${id}/similar?api_key=${process.env.API_KEY}`,
       );
       setMovies(data.results);
-      console.log(data);
     } catch (e) {
       console.log(e);
     }

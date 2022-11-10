@@ -1,9 +1,10 @@
 import type { GetServerSideProps, NextPage } from 'next';
-import { MainPage, TestPage } from 'components';
+import { TestPage } from 'components';
 import axios from 'axios';
 import { MovieDataType, MovieType } from 'types/Movie';
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
+import { getLocalstorage } from 'hooks';
 
 interface MovieDataPropsType {
   popular: {
@@ -15,7 +16,7 @@ const Home: NextPage<MovieDataPropsType> = ({ popular }) => {
   const { push } = useRouter();
 
   useEffect(() => {
-    const name = localStorage.getItem('name');
+    const name = getLocalstorage('name');
     if (!name) push('/register');
   }, []);
 

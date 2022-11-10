@@ -4,12 +4,13 @@ import axios from 'axios';
 import { MovieDataPropsType, MovieDataType } from 'types/Movie';
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
+import { getLocalstorage } from 'hooks';
 
 const Home: NextPage<MovieDataPropsType> = ({ playing, upcoming }) => {
   const { push } = useRouter();
 
   useEffect(() => {
-    const name = localStorage.getItem('name');
+    const name = getLocalstorage('name');
     if (!name) push('/register');
   }, []);
 

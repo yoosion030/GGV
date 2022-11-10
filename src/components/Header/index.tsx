@@ -2,12 +2,13 @@ import * as S from './style';
 import * as I from 'assets/svg';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
+import { getLocalstorage } from 'hooks';
 
 const Header = () => {
   const [name, setName] = useState<string | null>('');
   const { push } = useRouter();
   useEffect(() => {
-    setName(window.localStorage.getItem('name'));
+    setName(getLocalstorage('name'));
   }, []);
   return (
     <S.Header>

@@ -18,4 +18,5 @@ export interface MovieDetailType {
   homepage: string;
   production_companies: ArrayType[];
   genres: ArrayType[];
+  genre_ids: number[];
 }

@@ -4,7 +4,7 @@ import * as S from './style';
 import * as I from 'assets/svg';
 import { useEffect, useState } from 'react';
 import { useRecoilState } from 'recoil';
-import { LikeMovie, Select } from 'atoms';
+import { LikeMovie } from 'atoms';
 import { setLocalstorage } from 'hooks/setLocalstorage';
 import { css } from '@emotion/react';
 import { likeButtonAnimation } from 'shared/styles/Animation';

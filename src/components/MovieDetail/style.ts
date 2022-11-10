@@ -32,11 +32,16 @@ export const SubTitle = styled.p`
 `;
 
 export const MovieInfoText = styled.p`
+  width: 300px;
+  height: 40px;
   font-weight: 500;
   font-size: 20px;
   line-height: 40px;
-
   color: #ffffff;
+  overflow: hidden;
+  word-break: normal;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 `;
 
 export const Button = styled.button`

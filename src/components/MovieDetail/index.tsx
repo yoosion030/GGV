@@ -2,7 +2,7 @@ import axios from 'axios';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
-import { MovieDetailType } from 'types/MovieDetail';
+import { DetailDataType, MovieDetailType } from 'types/MovieDetail';
 import * as S from './style';
 
 interface DetailProps {
@@ -10,36 +10,37 @@ interface DetailProps {
 }
 
 const MovieDetail = ({ movie }: DetailProps) => {
-  const [overview, setOverview] = useState();
+  const [KRData, setKRData] = useState<MovieDetailType>();
 
-  const getData = async () => {
-    // 번역본 줄거리 가져오기
+  const getKRData = async () => {
+    // 번역본 가져오기
     try {
-      const { data } = await axios.get(
-        `https://api.themoviedb.org/3/movie/${movie?.id}/translations?api_key=${process.env.API_KEY}`,
+      const { data }: DetailDataType = await axios.get(
+        `https://api.themoviedb.org/3/movie/${movie?.id}?api_key=${process.env.API_KEY}&language=ko-KR`,
       );
 
-      // 한국 변역본만 가져오기
-      const {
-        data: { overview },
-      } = await data.translations.find((e: any) => e.iso_3166_1 === 'KR');
-      setOverview(overview);
+      setKRData(data);
     } catch (e) {
       console.log(e);
     }
   };
 
+  console.log(KRData);
   useEffect(() => {
-    getData();
+    getKRData();
   }, [movie]);
 
   const list = ['개봉', '장르', '국가', '회사', '예산', '러닝타임'];
+  const genres = KRData?.genres.map(value => value.name).join(', ');
+  const companies = KRData?.production_companies
+    .map(value => value.name)
+    .join(', ');
 
   const info = [
     movie?.release_date,
-    movie?.genres[0].name,
+    genres,
     movie?.original_language,
-    movie?.production_companies[0]?.name,
+    companies,
     movie?.budget.toLocaleString('ko-KR') + '원',
     movie?.runtime + '분',
   ];
@@ -76,7 +77,9 @@ const MovieDetail = ({ movie }: DetailProps) => {
       </S.MovieSection>
       <S.OverviewSection>
         <S.Title>줄거리</S.Title>
-        <S.SubTitle>{overview ? overview : movie?.overview}</S.SubTitle>
+        <S.SubTitle>
+          {KRData?.overview ? KRData.overview : movie?.overview}
+        </S.SubTitle>
       </S.OverviewSection>
     </div>
   );

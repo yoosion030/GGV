@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 export const Movie = styled.div`
   position: relative;
   width: 17vw;
-  height: 49vh;
+  height: 53vh;
 
   &:hover img {
     transform: scale(1.1);

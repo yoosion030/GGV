@@ -48,7 +48,6 @@ export function GlobalStyle() {
           font-smoothing: antialiased;
         }
 
-        button,
         input {
           font-family: 'GmarketSansMedium', sans-serif;
         }

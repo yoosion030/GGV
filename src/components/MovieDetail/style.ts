@@ -47,6 +47,7 @@ export const MovieInfoText = styled.p`
 export const ButtonSection = styled.div`
   display: flex;
   gap: 16px;
+  margin-top: auto;
 `;
 
 const button = styled.button`
@@ -54,7 +55,6 @@ const button = styled.button`
   height: 44px;
   cursor: pointer;
   border-radius: 8px;
-
   font-size: 16px;
   border: none;
 `;
@@ -62,7 +62,6 @@ const button = styled.button`
 export const HomepageButton = styled(button)`
   width: 139px;
   background: linear-gradient(241.68deg, #ff937b 17.51%, #fd9094 100%);
-  margin-top: auto;
 `;
 
 export const LikeButton = styled(button)`

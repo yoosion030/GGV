@@ -8,7 +8,7 @@ export const Background = styled.div`
   background-size: cover;
   backdrop-filter: blur(40px);
   background-repeat: no-repeat;
-  padding: 180px 9.7vw 0;
+  padding: 180px 9vw 0;
   overflow-x: hidden;
 
   img {
@@ -30,7 +30,7 @@ export const Blur = styled.div`
 export const PopularSection = styled.div`
   overflow: hidden;
   display: flex;
-  gap: 40px;
+  gap: 2.3vw;
 
   animation-duration: 1s;
   animation-name: slidedown;
@@ -47,7 +47,8 @@ export const PopularSection = styled.div`
 `;
 
 export const BestPoster = styled.a`
-  width: 487px;
+  width: 25vw;
+  height: 66vh;
   position: relative;
 `;
 
@@ -102,11 +103,13 @@ export const BestTitle = styled.h1`
 
 export const Movie = styled.a`
   position: relative;
+  width: 16vw;
+  height: 41vh;
 `;
 
 export const BestOverview = styled.p`
   color: #d0d0d0;
-  height: 207px;
+  height: 21vh;
 `;
 
 export const ListSection = styled.div`

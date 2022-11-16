@@ -15,8 +15,7 @@ const Popular = ({ movie }: MovieProps) => {
           <S.BestPoster href={`/movie/${movie[0].id}`}>
             <Image
               src={`https://image.tmdb.org/t/p/w500${movie[0].poster_path}`}
-              width={487}
-              height={708}
+              layout="fill"
               alt=""
             />
             <S.BestIcon>Best</S.BestIcon>
@@ -27,33 +26,16 @@ const Popular = ({ movie }: MovieProps) => {
             <hr />
             <S.BestOverview>{movie[0].overview}</S.BestOverview>
             <S.ListSection>
-              <S.Movie href={`/movie/${movie[1].id}`}>
-                <Image
-                  src={`https://image.tmdb.org/t/p/w500${movie[1].poster_path}`}
-                  width={310}
-                  height={441}
-                  alt=""
-                />
-                <S.Number>2</S.Number>
-              </S.Movie>
-              <S.Movie href={`/movie/${movie[2].id}`}>
-                <Image
-                  src={`https://image.tmdb.org/t/p/w500${movie[2].poster_path}`}
-                  width={310}
-                  height={441}
-                  alt=""
-                />
-                <S.Number>3</S.Number>
-              </S.Movie>
-              <S.Movie href={`/movie/${movie[3].id}`}>
-                <Image
-                  src={`https://image.tmdb.org/t/p/w500${movie[3].poster_path}`}
-                  width={310}
-                  height={441}
-                  alt=""
-                />
-                <S.Number>4</S.Number>
-              </S.Movie>
+              {[1, 2, 3].map((value, i) => (
+                <S.Movie href={`/movie/${movie[value].id}`} key={value}>
+                  <Image
+                    src={`https://image.tmdb.org/t/p/w500${movie[value].poster_path}`}
+                    layout="fill"
+                    alt=""
+                  />
+                  <S.Number>{value + 1}</S.Number>
+                </S.Movie>
+              ))}
             </S.ListSection>
           </S.InfoSection>
         </S.PopularSection>

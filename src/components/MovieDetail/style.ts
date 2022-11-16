@@ -44,15 +44,38 @@ export const MovieInfoText = styled.p`
   text-overflow: ellipsis;
 `;
 
-export const Button = styled.button`
+export const ButtonSection = styled.div`
+  display: flex;
+  gap: 16px;
+`;
+
+const button = styled.button`
   font-family: 'Noto Sans KR';
-  width: 139px;
   height: 44px;
-  background: linear-gradient(241.68deg, #ff937b 17.51%, #fd9094 100%);
-  border-radius: 8px;
-  margin-top: auto;
-  border: none;
   cursor: pointer;
+  border-radius: 8px;
+
+  font-size: 16px;
+  border: none;
+`;
+
+export const HomepageButton = styled(button)`
+  width: 139px;
+  background: linear-gradient(241.68deg, #ff937b 17.51%, #fd9094 100%);
+  margin-top: auto;
+`;
+
+export const LikeButton = styled(button)`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 106px;
+  gap: 8px;
+  background: #ffffff;
+  div {
+    width: 22px;
+    height: 20px;
+  }
 `;
 
 export const OverviewSection = styled.div`

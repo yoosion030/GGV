@@ -44,10 +44,10 @@ export const Overview = styled.p`
 
 export const LikeButton = styled.button`
   position: absolute;
-  width: 42px;
-  height: 42px;
-  left: 80%;
-  top: 12px;
+  width: 4vh;
+  height: 4vh;
+  left: 14vw;
+  top: 0.5vw;
 
   background: rgba(0, 0, 0, 0.5);
   box-shadow: 0px 5.25px 5.25px rgba(0, 0, 0, 0.25);

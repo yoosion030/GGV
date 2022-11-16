@@ -19,7 +19,7 @@ export const Title = styled.h1`
 
 export const MovieSection = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(350px, auto));
+  grid-template-columns: repeat(auto-fill, minmax(17vw, auto));
   justify-content: space-between;
   row-gap: 56px;
 `;

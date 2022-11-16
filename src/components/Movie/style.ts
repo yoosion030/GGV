@@ -2,8 +2,8 @@ import styled from '@emotion/styled';
 
 export const Movie = styled.div`
   position: relative;
-  width: 350px;
-  height: 576px;
+  width: 17vw;
+  height: 49vh;
 
   &:hover img {
     transform: scale(1.1);
@@ -16,7 +16,7 @@ export const Movie = styled.div`
 
 export const MovieInfo = styled.a`
   height: 100%;
-  width: 350px;
+  width: 17vw;
   color: #ffffff;
   display: inline-flex;
   flex-direction: column;
@@ -46,7 +46,7 @@ export const LikeButton = styled.button`
   position: absolute;
   width: 42px;
   height: 42px;
-  left: 296px;
+  left: 80%;
   top: 12px;
 
   background: rgba(0, 0, 0, 0.5);

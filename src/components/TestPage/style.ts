@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 
 export const MainSection = styled.div`
-  padding: 100px 9.7vw;
+  padding: 100px 9vw;
   background-color: #1a1919;
 
   &::-webkit-scrollbar {

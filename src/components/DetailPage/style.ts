@@ -4,7 +4,7 @@ export const DetailSection = styled.div`
   position: relative;
   width: 100%;
   height: 100%;
-  padding: 180px 9.7vw 0;
+  padding: 180px 9vw 0;
 `;
 
 export const SimilarSection = styled.div`

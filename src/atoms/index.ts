@@ -1,1 +1,1 @@
-export { LikeMovie, Select } from './AtomContainer';
+export { LikeMovie, Select, GenreId } from './AtomContainer';

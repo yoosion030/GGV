@@ -11,8 +11,15 @@ export const LikeMovie = atom<number[] | null | undefined>({
 /**
  * 상영 예정 / 상영 중 영화 선택
  */
-
 export const Select = atom<'playing' | 'upcoming'>({
   key: 'Select',
   default: 'playing',
+});
+
+/**
+ * 필터 선택 Id
+ */
+export const GenreId = atom<number | null>({
+  key: 'GenreId',
+  default: null,
 });

@@ -5,6 +5,12 @@ export const MainSection = styled.div`
   background-color: #1a1919;
 `;
 
+export const MainHeader = styled.div`
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+`;
+
 export const ToggleSection = styled.div`
   display: flex;
   gap: 24px;

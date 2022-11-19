@@ -8,11 +8,14 @@ export const Dropdown = styled.div`
   background-color: #2b2b2b;
   text-align: center;
   line-height: 48px;
+  position: relative;
+  z-index: 100;
 `;
+
 export const Menu = styled.ul`
   position: absolute;
   right: 0;
-  top: 58px;
+  top: 60px;
   width: 120px;
   background: #2a2a2a;
   box-shadow: 0px 4px 24px rgba(0, 0, 0, 0.5);
@@ -20,7 +23,7 @@ export const Menu = styled.ul`
   z-index: 4;
   padding: 12px 0;
 
-  @keyframes slide-fade-in-dropdown-animation {
+  @keyframes slide-fade-in {
     0% {
       transform: translateY(-100%);
     }
@@ -30,7 +33,7 @@ export const Menu = styled.ul`
     }
   }
 
-  @keyframes slide-fade-out-dropdown-animation {
+  @keyframes slide-fade-out {
     0% {
       transform: translateY(0);
     }
@@ -39,6 +42,7 @@ export const Menu = styled.ul`
       transform: translateY(-100%);
     }
   }
+  overflow: hidden;
 `;
 
 export const MenuItem = styled.li`

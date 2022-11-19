@@ -5,7 +5,7 @@ export const Dropdown = styled.div`
   cursor: pointer;
   width: 90px;
   height: 48px;
-  background-color: red;
+  background-color: #2b2b2b;
   text-align: center;
   line-height: 48px;
 `;
@@ -14,7 +14,6 @@ export const Menu = styled.ul`
   right: 0;
   top: 58px;
   width: 120px;
-  height: 258px;
   background: #2a2a2a;
   box-shadow: 0px 4px 24px rgba(0, 0, 0, 0.5);
   border-radius: 8px;

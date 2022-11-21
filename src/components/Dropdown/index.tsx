@@ -4,10 +4,33 @@ import { useEffect, useState } from 'react';
 import { useRecoilState } from 'recoil';
 import * as S from './style';
 
+interface MenuItemType {
+  title: string;
+  id: number | null;
+}
+
 const Dropdown = () => {
   const [dropdownVisibility, setDropdownVisibility] = useState<boolean>(false);
   const [visibilityAnimation, setVisibilityAnimation] =
     useState<boolean>(false);
+  const [genreId, setGenreId] = useRecoilState(GenreId);
+
+  const menuItemObject: MenuItemType[] = [
+    { title: '로맨스', id: 10749 },
+    { title: '액션', id: 28 },
+    { title: '호러', id: 27 },
+    { title: '애니메이션', id: 16 },
+    { title: '전쟁', id: 10752 },
+    { title: '코미디', id: 35 },
+    { title: '선택해제', id: null },
+  ];
+  const selectItem = (id: number | null) =>
+    genreId === id &&
+    id !== null &&
+    css({
+      backgroundColor: '#1b1b1b',
+    });
+
   useEffect(() => {
     if (dropdownVisibility) {
       setVisibilityAnimation(true);
@@ -18,12 +41,6 @@ const Dropdown = () => {
     }
   }, [dropdownVisibility]);
 
-  const [genreId, setGenreId] = useRecoilState(GenreId);
-  const selectItem = (id: number) =>
-    genreId === id &&
-    css({
-      backgroundColor: '#1b1b1b',
-    });
   return (
     <>
       <S.Dropdown onClick={e => setDropdownVisibility(!dropdownVisibility)}>
@@ -38,25 +55,15 @@ const Dropdown = () => {
               0.3s ease;
           `}
         >
-          <S.MenuItem onClick={() => setGenreId(10749)} css={selectItem(10749)}>
-            로맨스
-          </S.MenuItem>
-          <S.MenuItem onClick={() => setGenreId(28)} css={selectItem(28)}>
-            액션
-          </S.MenuItem>
-          <S.MenuItem onClick={() => setGenreId(27)} css={selectItem(27)}>
-            호러
-          </S.MenuItem>
-          <S.MenuItem onClick={() => setGenreId(16)} css={selectItem(16)}>
-            애니메이션
-          </S.MenuItem>
-          <S.MenuItem onClick={() => setGenreId(10752)} css={selectItem(10752)}>
-            전쟁
-          </S.MenuItem>
-          <S.MenuItem onClick={() => setGenreId(35)} css={selectItem(35)}>
-            코미디
-          </S.MenuItem>
-          <S.MenuItem onClick={() => setGenreId(null)}>선택해제</S.MenuItem>
+          {menuItemObject.map(menuItem => (
+            <S.MenuItem
+              key={menuItem.id}
+              onClick={() => setGenreId(menuItem.id)}
+              css={selectItem(menuItem.id)}
+            >
+              {menuItem.title}
+            </S.MenuItem>
+          ))}
         </S.Menu>
       )}
     </>

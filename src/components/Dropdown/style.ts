@@ -8,8 +8,6 @@ export const Dropdown = styled.div`
   background-color: #2b2b2b;
   text-align: center;
   line-height: 48px;
-  position: relative;
-  z-index: 100;
 `;
 
 export const Menu = styled.ul`
@@ -26,12 +24,10 @@ export const Menu = styled.ul`
   @keyframes slide-fade-in {
     from {
       opacity: 0;
-      visibility: hidden;
       transform: translateY(-10px);
     }
     to {
       opacity: 1;
-      visibility: visible;
       transform: translateY(0);
     }
   }
@@ -39,16 +35,13 @@ export const Menu = styled.ul`
   @keyframes slide-fade-out {
     from {
       opacity: 1;
-      visibility: visible;
       transform: translateY(0);
     }
     to {
       opacity: 0;
-      visibility: hidden;
       transform: translateY(-10px);
     }
   }
-  overflow: hidden;
 `;
 
 export const MenuItem = styled.li`

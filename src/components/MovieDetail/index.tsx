@@ -4,8 +4,7 @@ import { useEffect, useState } from 'react';
 import { MovieDetailDataType, MovieDetailType } from 'types/MovieDetail';
 import * as S from './style';
 import * as I from 'assets/svg';
-import { css } from '@emotion/react';
-import { likeButtonAnimation } from 'shared/styles/Animation';
+import { handleAnimation } from 'shared/styles/Animation';
 import { useRecoilState } from 'recoil';
 import { LikeMovie } from 'atoms';
 import { getLocalstorage, getUser, HandleLike } from 'hooks';
@@ -51,15 +50,6 @@ const MovieDetail = ({ movie }: DetailProps) => {
   useEffect(() => {
     getKRData();
   }, [movie]);
-
-  /**
-   * 하트 클릭 시 애니메이션
-   */
-  const handleAnimation = () =>
-    css({
-      animation: `${likeButtonAnimation} .45s`,
-      width: '100%',
-    });
 
   useEffect(() => {
     // 로컬스토리지에 저장된 유저 정보 가져오기

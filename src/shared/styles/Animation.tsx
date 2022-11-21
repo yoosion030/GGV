@@ -1,4 +1,13 @@
-import { keyframes } from '@emotion/react';
+import { css, keyframes } from '@emotion/react';
+
+/**
+ * 하트 클릭 시 애니메이션
+ */
+export const handleAnimation = () =>
+  css({
+    animation: `${likeButtonAnimation} .45s`,
+    width: '100%',
+  });
 
 export const shakeAnimation = keyframes`
  0% {

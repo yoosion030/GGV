@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 import { useRecoilState } from 'recoil';
 import { LikeMovie } from 'atoms';
 import { css } from '@emotion/react';
-import { likeButtonAnimation } from 'shared/styles/Animation';
+import { handleAnimation } from 'shared/styles/Animation';
 import { getLocalstorage, getUser, HandleLike } from 'hooks';
 
 interface MovieProps {
@@ -33,14 +33,6 @@ const Movie = ({ movie }: MovieProps) => {
       setLikeMovie(JSON.parse(result));
     }
   }, []);
-
-  /**
-   * 하트 클릭 시 애니메이션
-   */
-  const handleAnimation = () =>
-    css({
-      animation: `${likeButtonAnimation} .45s`,
-    });
 
   return (
     <S.Movie>

@@ -29,6 +29,7 @@ const Dropdown = () => {
     id !== null &&
     css({
       backgroundColor: '#1b1b1b',
+      fontWeight: 'bold',
     });
 
   useEffect(() => {

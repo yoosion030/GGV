@@ -26,14 +26,16 @@ const Popular = ({ movie }: MovieProps) => {
             <hr />
             <S.BestOverview>{movie[0].overview}</S.BestOverview>
             <S.ListSection>
-              {[1, 2, 3].map((value, i) => (
-                <S.Movie href={`/movie/${movie[value].id}`} key={value}>
+              {[...Array(3)].map((_, i) => (
+                <S.Movie href={`/movie/${movie[i + 1].id}`} key={i + 1}>
                   <Image
-                    src={`https://image.tmdb.org/t/p/w500${movie[value].poster_path}`}
+                    src={`https://image.tmdb.org/t/p/w500${
+                      movie[i + 1].poster_path
+                    }`}
                     layout="fill"
                     alt=""
                   />
-                  <S.Number>{value + 1}</S.Number>
+                  <S.Number>{i + 2}</S.Number>
                 </S.Movie>
               ))}
             </S.ListSection>

@@ -18,7 +18,7 @@ const MainPage = ({ playing, upcoming }: MovieDataPropsType) => {
       transition: '500ms',
     });
 
-  const [genreId, setGenreId] = useRecoilState(GenreId);
+  const [genreId] = useRecoilState(GenreId);
 
   return (
     <>

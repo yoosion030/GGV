@@ -14,7 +14,7 @@ const Dropdown = () => {
     } else {
       setTimeout(() => {
         setVisibilityAnimation(false);
-      }, 400);
+      }, 300);
     }
   }, [dropdownVisibility]);
 
@@ -30,8 +30,7 @@ const Dropdown = () => {
             animation: ${dropdownVisibility
                 ? 'slide-fade-in'
                 : 'slide-fade-out'}
-              0.4s ease;
-            animation-fill-mode: forwards;
+              0.3s ease;
           `}
         >
           <S.MenuItem onClick={() => setGenreId(10749)}>로맨스</S.MenuItem>

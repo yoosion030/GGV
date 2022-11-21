@@ -24,22 +24,28 @@ export const Menu = styled.ul`
   padding: 12px 0;
 
   @keyframes slide-fade-in {
-    0% {
-      transform: translateY(-100%);
+    from {
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-10px);
     }
-
-    100% {
+    to {
+      opacity: 1;
+      visibility: visible;
       transform: translateY(0);
     }
   }
 
   @keyframes slide-fade-out {
-    0% {
+    from {
+      opacity: 1;
+      visibility: visible;
       transform: translateY(0);
     }
-
-    100% {
-      transform: translateY(-100%);
+    to {
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-10px);
     }
   }
   overflow: hidden;
@@ -50,4 +56,7 @@ export const MenuItem = styled.li`
   padding-left: 24px;
   line-height: 40px;
   cursor: pointer;
+  :hover {
+    background-color: #1b1b1b;
+  }
 `;

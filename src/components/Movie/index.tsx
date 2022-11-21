@@ -7,7 +7,7 @@ import { useRecoilState } from 'recoil';
 import { LikeMovie } from 'atoms';
 import { css } from '@emotion/react';
 import { likeButtonAnimation } from 'shared/styles/Animation';
-import { getLocalstorage, setLocalstorage } from 'hooks';
+import { getLocalstorage, getUser, setLocalstorage } from 'hooks';
 
 interface MovieProps {
   movie: MovieType;
@@ -24,12 +24,10 @@ const Movie = ({ movie }: MovieProps) => {
   const [user, setUser] = useState<string>();
   useEffect(() => {
     // 로컬스토리지에 저장된 유저 정보 가져오기
-    const userInfo = ['year', 'month', 'date', 'name']
-      .map(value => getLocalstorage(value))
-      .join('');
+    const userInfo = getUser();
     setUser(userInfo);
-
     const result = getLocalstorage(userInfo);
+
     if (result) {
       setIsLike(result.includes(movie.id.toString()));
       setLikeMovie(JSON.parse(result));

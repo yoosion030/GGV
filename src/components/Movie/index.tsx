@@ -7,7 +7,7 @@ import { useRecoilState } from 'recoil';
 import { LikeMovie } from 'atoms';
 import { css } from '@emotion/react';
 import { likeButtonAnimation } from 'shared/styles/Animation';
-import { getLocalstorage, getUser, setLocalstorage } from 'hooks';
+import { getLocalstorage, getUser, HandleLike } from 'hooks';
 
 interface MovieProps {
   movie: MovieType;
@@ -33,33 +33,6 @@ const Movie = ({ movie }: MovieProps) => {
       setLikeMovie(JSON.parse(result));
     }
   }, []);
-
-  /**
-   * 좋아요 버튼 눌렀을 때 실행시키는 함수
-   */
-  const handleLike = () => {
-    setIsLike(!isLike);
-
-    if (likeMovie) {
-      // 저장한 영화가 이미 있고
-      if (likeMovie.includes(movie.id)) {
-        // 중복된 영화를 저장했을 때 (삭제)
-        setLocalstorage(
-          user,
-          likeMovie.filter(value => value !== movie.id),
-        );
-        setLikeMovie(likeMovie.filter(value => value !== movie.id));
-      } else {
-        // 중복되지 않은 영화를 저장했을 때 (추가)
-        setLocalstorage(user, [...likeMovie, movie.id]);
-        setLikeMovie([...likeMovie, movie.id]);
-      }
-    } else {
-      // 저장한 영화가 없을 때 실행
-      setLocalstorage(user, [movie.id]);
-      setLikeMovie([movie.id]);
-    }
-  };
 
   /**
    * 하트 클릭 시 애니메이션
@@ -90,7 +63,11 @@ const Movie = ({ movie }: MovieProps) => {
         <S.Title>{movie.title}</S.Title>
         <S.Overview>{movie.overview}</S.Overview>
       </S.MovieInfo>
-      <S.LikeButton onClick={handleLike}>
+      <S.LikeButton
+        onClick={() =>
+          HandleLike(isLike, setIsLike, movie, user, likeMovie, setLikeMovie)
+        }
+      >
         {isLike ? (
           <div css={handleAnimation}>
             <I.PinkLikeIcon />

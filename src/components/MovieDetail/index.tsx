@@ -1,6 +1,5 @@
 import axios from 'axios';
 import Image from 'next/image';
-import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { MovieDetailDataType, MovieDetailType } from 'types/MovieDetail';
 import * as S from './style';
@@ -9,7 +8,7 @@ import { css } from '@emotion/react';
 import { likeButtonAnimation } from 'shared/styles/Animation';
 import { useRecoilState } from 'recoil';
 import { LikeMovie } from 'atoms';
-import { getLocalstorage, getUser, setLocalstorage } from 'hooks';
+import { getLocalstorage, getUser, HandleLike } from 'hooks';
 
 interface DetailProps {
   movie: MovieDetailType;
@@ -17,7 +16,7 @@ interface DetailProps {
 
 const MovieDetail = ({ movie }: DetailProps) => {
   const [KRData, setKRData] = useState<MovieDetailType>();
-  const [isLike, setIsLike] = useState<boolean>();
+  const [isLike, setIsLike] = useState<boolean>(false);
   const [likeMovie, setLikeMovie] = useRecoilState(LikeMovie); // 좋아요 누른 영화 아이디 배열
   const [user, setUser] = useState<string>();
   const list = ['개봉', '장르', '국가', '회사', '예산', '러닝타임'];
@@ -74,33 +73,6 @@ const MovieDetail = ({ movie }: DetailProps) => {
     }
   }, []);
 
-  /**
-   * 좋아요 버튼 눌렀을 때 실행시키는 함수
-   */
-  const handleLike = () => {
-    setIsLike(!isLike);
-
-    if (likeMovie) {
-      // 저장한 영화가 이미 있고
-      if (likeMovie.includes(movie.id)) {
-        // 중복된 영화를 저장했을 때 (삭제)
-        setLocalstorage(
-          user,
-          likeMovie.filter(value => value !== movie.id),
-        );
-        setLikeMovie(likeMovie.filter(value => value !== movie.id));
-      } else {
-        // 중복되지 않은 영화를 저장했을 때 (추가)
-        setLocalstorage(user, [...likeMovie, movie.id]);
-        setLikeMovie([...likeMovie, movie.id]);
-      }
-    } else {
-      // 저장한 영화가 없을 때 실행
-      setLocalstorage(user, [movie.id]);
-      setLikeMovie([movie.id]);
-    }
-  };
-
   return (
     <>
       <S.MovieSection>
@@ -134,7 +106,18 @@ const MovieDetail = ({ movie }: DetailProps) => {
                 홈페이지 바로가기
               </S.HomepageButton>
             )}
-            <S.LikeButton onClick={handleLike}>
+            <S.LikeButton
+              onClick={() =>
+                HandleLike(
+                  isLike,
+                  setIsLike,
+                  movie,
+                  user,
+                  likeMovie,
+                  setLikeMovie,
+                )
+              }
+            >
               {isLike ? (
                 <div css={handleAnimation}>
                   <I.PinkLikeIcon />

@@ -30,7 +30,7 @@ const MovieDetail = ({ movie }: DetailProps) => {
     genres,
     movie?.original_language,
     companies,
-    movie?.budget.toLocaleString('ko-KR') + '원',
+    movie?.budget === 0 ? '알 수 없음' : movie?.budget.toLocaleString('ko-KR') + '원',
     movie?.runtime + '분',
   ];
 

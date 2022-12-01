@@ -18,6 +18,10 @@ export const Header = styled.header`
     width: 104px;
     height: 28px;
   }
+
+  @media screen and (max-width: 640px) {
+    padding: 0 5vw;
+  }
 `;
 
 export const Nav = styled.nav`

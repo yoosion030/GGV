@@ -3,6 +3,10 @@ import styled from '@emotion/styled';
 export const UserSection = styled.div`
   width: 100%;
   padding: 144px 9vw;
+
+  @media screen and (max-width: 640px) {
+    padding: 144px 5vw;
+  }
 `;
 
 export const Title = styled.h1`

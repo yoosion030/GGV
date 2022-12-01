@@ -3,6 +3,10 @@ import styled from '@emotion/styled';
 export const MainSection = styled.div`
   padding: 100px 9vw;
   background-color: #1a1919;
+
+  @media screen and (max-width: 640px) {
+    padding: 100px 5vw;
+  }
 `;
 
 export const MainHeader = styled.div`

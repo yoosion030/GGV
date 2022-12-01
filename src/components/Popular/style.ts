@@ -14,6 +14,10 @@ export const Background = styled.div`
   img {
     border-radius: 16px;
   }
+
+  @media screen and (max-width: 640px) {
+    padding: 180px 5vw 0;
+  }
 `;
 
 export const Blur = styled.div`

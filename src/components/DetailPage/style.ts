@@ -4,23 +4,15 @@ export const DetailSection = styled.div`
   position: relative;
   width: 100%;
   height: 100%;
-  padding: 180px 9vw 0;
+  padding: 11.25em 9vw 0;
 
   @media screen and (max-width: 640px) {
-    padding: 180px 5vw 0;
+    padding: 11.25em 5vw 0;
   }
 `;
 
 export const SimilarSection = styled.div`
-  padding: 40px 0 160px;
-`;
-
-export const SimilarTitle = styled.h1`
-  font-weight: 700;
-  font-size: 32px;
-  line-height: 38px;
-  color: #ffffff;
-  margin-bottom: 24px;
+  padding: 2.5em 0 10em;
 `;
 
 export const Blur = styled.div`

@@ -13,6 +13,13 @@ export function GlobalStyle() {
             format('woff');
         }
 
+        html {
+          font-size: 16px;
+          @media screen and (max-width: 960px) {
+            font-size: 12px;
+          }
+        }
+
         body {
           font-family: 'Roboto', sans-serif;
           color: #ffffff;

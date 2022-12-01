@@ -4,15 +4,15 @@ export const DetailSection = styled.div`
   position: relative;
   width: 100%;
   height: 100%;
-  padding: 11.25em 9vw 0;
+  padding: 11.25rem 9vw 0;
 
   @media screen and (max-width: 640px) {
-    padding: 11.25em 5vw 0;
+    padding: 11.25rem 5vw 0;
   }
 `;
 
 export const SimilarSection = styled.div`
-  padding: 2.5em 0 10em;
+  padding: 2.5rem 0 10rem;
 `;
 
 export const Blur = styled.div`

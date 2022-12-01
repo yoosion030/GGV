@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 
 export const Header = styled.header`
   position: fixed;
-  height: 80px;
+  height: 5rem;
   width: 100%;
   background: rgba(0, 0, 0, 0.1);
   box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.25);
@@ -15,8 +15,8 @@ export const Header = styled.header`
   }
 
   svg {
-    width: 104px;
-    height: 28px;
+    width: 6.5rem;
+    height: 1.75rem;
   }
 
   @media screen and (max-width: 640px) {
@@ -42,9 +42,9 @@ export const NavWrapper = styled.div`
 `;
 
 export const Logo = styled.div`
-  font-size: 32px;
+  font-size: 2rem;
 `;
 
 export const NavContent = styled.a`
-  font-size: 18px;
+  font-size: 1.125rem;
 `;

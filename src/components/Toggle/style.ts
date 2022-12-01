@@ -8,7 +8,7 @@ export const ToggleButton = styled.div<SelectType>`
   display: flex;
   align-items: center;
   height: 38px;
-  width: 72px;
+  width: 5rem;
   background: ${({ select }) =>
     select === 'playing'
       ? 'linear-gradient(241.68deg, #ff937b 17.51%, #fd9094 100%)'

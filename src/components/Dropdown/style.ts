@@ -1,25 +1,25 @@
 import styled from '@emotion/styled';
 
 export const Dropdown = styled.div`
-  border-radius: 8px;
+  border-radius: 0.5em;
   cursor: pointer;
-  width: 90px;
-  height: 48px;
+  width: 5.625em;
+  height: 3em;
   background-color: #2b2b2b;
   text-align: center;
-  line-height: 48px;
+  line-height: 3em;
 `;
 
 export const Menu = styled.ul`
   position: absolute;
   right: 0;
-  top: 60px;
-  width: 120px;
+  top: 3.75em;
+  width: 7.5em;
   background: #2a2a2a;
   box-shadow: 0px 4px 24px rgba(0, 0, 0, 0.5);
-  border-radius: 8px;
+  border-radius: 0.500em;
   z-index: 4;
-  padding: 12px 0;
+  padding: 0.75em 0;
 
   @keyframes slide-fade-in {
     from {
@@ -45,9 +45,9 @@ export const Menu = styled.ul`
 `;
 
 export const MenuItem = styled.li`
-  height: 40px;
-  padding-left: 24px;
-  line-height: 40px;
+  height: 2.5em;
+  padding-left: 1.5em;
+  line-height: 2.5em;
   cursor: pointer;
   :hover {
     background-color: #1b1b1b;

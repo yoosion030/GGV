@@ -27,7 +27,7 @@ const Popular = ({ movie }: MovieProps) => {
           <S.InfoSection>
             <Title
               style={css`
-                font-size: 40px;
+                font-size: 2.5rem;
               `}
             >
               {movie[0].title}

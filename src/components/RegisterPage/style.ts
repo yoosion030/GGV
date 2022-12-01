@@ -16,19 +16,19 @@ export const RegisterBackground = styled.div`
 
 export const LogoWrapper = styled.div`
   position: absolute;
-  left: 104px;
-  top: 104px;
+  left: 6.5rem;
+  top: 6.5rem;
 `;
 
 export const RegisterSection = styled.form`
-  width: 496px;
-  height: 680px;
+  width: 31rem;
+  height: 42.5rem;
   background: rgba(0, 0, 0, 0.6);
   border: 1px solid rgba(255, 255, 255, 0.4);
   box-shadow: 0px 4px 18px rgba(0, 0, 0, 0.16);
   backdrop-filter: blur(12px);
-  border-radius: 24px;
-  padding: 32px;
+  border-radius: 1.5rem;
+  padding: 2rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -36,16 +36,16 @@ export const RegisterSection = styled.form`
 
 export const Title = styled.h1`
   font-family: 'GmarketSansMedium';
-  font-size: 24px;
-  margin-top: 23px;
+  font-size: 1.5rem;
+  margin-top: 1.5rem;
 `;
 
 export const InputTitle = styled.p`
   font-style: normal;
   font-weight: 500;
-  font-size: 14px;
-  line-height: 20px;
-  margin-bottom: 8px;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  margin-bottom: 0.5rem;
 `;
 
 interface ErrorStyleProps {
@@ -53,12 +53,12 @@ interface ErrorStyleProps {
 }
 
 export const Input = styled.input<ErrorStyleProps>`
-  height: 56px;
+  height: 3.5rem;
   background-color: #454545;
-  border-radius: 8px;
-  padding: 0 12px;
-  font-size: 16px;
-  margin-bottom: 40px;
+  border-radius: 0.5rem;
+  padding: 0 0.75rem;
+  font-size: 1rem;
+  margin-bottom: 2.5rem;
   color: #ffffff;
   border: ${({ errorStyle }) => (errorStyle ? '1px solid #EB0707' : 'none')};
   animation: ${({ errorStyle }) =>
@@ -95,10 +95,10 @@ export const ErrorMessage = styled.p`
 
 export const Button = styled.button`
   display: block;
-  width: 120px;
-  height: 56px;
+  width: 7.5rem;
+  height: 3.5rem;
   background: linear-gradient(241.68deg, #ff937b 17.51%, #fd9094 100%);
-  border-radius: 10px;
+  border-radius: 0.625rem;
   border: none;
   cursor: pointer;
   margin-left: auto;

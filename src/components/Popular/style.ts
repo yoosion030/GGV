@@ -8,15 +8,15 @@ export const Background = styled.div`
   background-size: cover;
   backdrop-filter: blur(40px);
   background-repeat: no-repeat;
-  padding: 180px 9vw 0;
+  padding: 11.25rem 9vw 0;
   overflow-x: hidden;
 
   img {
-    border-radius: 16px;
+    border-radius: 1rem;
   }
 
   @media screen and (max-width: 640px) {
-    padding: 180px 5vw 0;
+    padding: 15rem 5vw 0;
   }
 `;
 
@@ -60,28 +60,28 @@ export const BestIcon = styled.div`
   position: absolute;
   top: 0;
   right: 0;
-  width: 76px;
-  height: 37px;
+  width: 4.75rem;
+  height: 2.313rem;
   background: rgba(255, 20, 20, 0.8);
   backdrop-filter: blur(7.5px);
   font-weight: 500;
-  font-size: 18px;
-  line-height: 37px;
+  font-size: 1.125rem;
+  line-height: 2.313rem;
   text-align: center;
-  border-top-right-radius: 16px;
-  border-bottom-left-radius: 16px;
+  border-top-right-radius: 1rem;
+  border-bottom-left-radius: 1rem;
   color: #ffffff;
 `;
 
 export const Number = styled.div`
   position: absolute;
-  width: 19px;
-  height: 38px;
-  left: 16px;
-  top: 16px;
+  width: 1.25em;
+  height: 2.375rem;
+  left: 1rem;
+  top: 1rem;
   font-style: normal;
   font-weight: 500;
-  font-size: 32px;
+  font-size: 2rem;
   color: #ffffff;
   text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
 `;
@@ -92,7 +92,7 @@ export const InfoSection = styled.div`
   hr {
     width: 100%;
     border: 1px solid #545454;
-    margin: 16px 0;
+    margin: 1rem 0;
   }
 `;
 

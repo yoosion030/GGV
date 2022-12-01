@@ -34,14 +34,14 @@ export function GlobalStyle() {
         }
 
         body::-webkit-scrollbar {
-          width: 10px;
+          width: 0.625rem;
         }
 
         body::-webkit-scrollbar-thumb {
           background-color: #ccc;
-          border-radius: 10px;
+          border-radius: 0.625rem;
 
-          height: 56px;
+          height: 3.5rem;
           background-clip: content-box;
         }
 

@@ -2,10 +2,10 @@ import styled from '@emotion/styled';
 
 export const UserSection = styled.div`
   width: 100%;
-  padding: 144px 9vw;
+  padding: 9rem 9vw;
 
   @media screen and (max-width: 640px) {
-    padding: 144px 5vw;
+    padding: 12rem 5vw;
   }
 `;
 
@@ -13,17 +13,17 @@ export const Title = styled.h1`
   font-family: 'Noto Sans';
   font-style: normal;
   font-weight: 600;
-  font-size: 40px;
-  line-height: 54px;
+  font-size: 2.5rem;
+  line-height: 3.375rem;
 
   color: #ffffff;
   text-align: center;
-  margin-bottom: 32px;
+  margin-bottom: 2rem;
 `;
 
 export const InfoText = styled.p`
   text-align: center;
-  margin-top: 300px;
-  font-size: 24px;
-  line-height: 54px;
+  margin-top: 18.75rem;
+  font-size: 1.5rem;
+  line-height: 3.375rem;
 `;

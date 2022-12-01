@@ -57,7 +57,7 @@ const RegisterPage = () => {
           <S.InputWrapper>
             <S.Input
               css={css`
-                width: 200px;
+                width: 12.5rem;
               `}
               placeholder="YYYY"
               {...register('year', {
@@ -71,7 +71,7 @@ const RegisterPage = () => {
             />
             <S.Input
               css={css`
-                width: 100px;
+                width: 6.25rem;
               `}
               placeholder="MM"
               {...register('month', {
@@ -85,7 +85,7 @@ const RegisterPage = () => {
             />
             <S.Input
               css={css`
-                width: 100px;
+                width: 6.25rem;
               `}
               placeholder="DD"
               {...register('date', {

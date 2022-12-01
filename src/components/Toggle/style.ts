@@ -7,24 +7,24 @@ interface SelectType {
 export const ToggleButton = styled.div<SelectType>`
   display: flex;
   align-items: center;
-  height: 38px;
+  height: 2.375rem;
   width: 5rem;
   background: ${({ select }) =>
     select === 'playing'
       ? 'linear-gradient(241.68deg, #ff937b 17.51%, #fd9094 100%)'
       : 'linear-gradient(241.68deg, #63FCBB 17.51%, #54EDC8 100%)'};
-  border-radius: 30px;
+  border-radius: 1.875rem;
   cursor: pointer;
-  padding: 0 4px;
+  padding: 0 0.25rem;
 `;
 
 export const SwitchHandle = styled.div<SelectType>`
-  height: 30px;
-  width: 30px;
-  border-radius: 30px;
+  height: 1.875rem;
+  width: 1.875rem;
+  border-radius: 1.875rem;
   background: #ffffff;
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2);
-  border-radius: 30px;
-  ${({ select }) => select === 'upcoming' && 'transform: translateX(34px)'};
+  border-radius: 1.875rem;
+  ${({ select }) => select === 'upcoming' && 'transform: translateX(2.5rem)'};
   transition: 500ms;
 `;

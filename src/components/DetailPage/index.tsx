@@ -14,9 +14,7 @@ const DetailPage = ({ data }: MovieDetailDataType) => {
         <MovieDetail movie={movie} />
         <S.SimilarSection>
           <S.SimilarTitle>비슷한 영화</S.SimilarTitle>
-          <S.SimilarMovieSection>
-            <SimilarMovie id={data.id} />
-          </S.SimilarMovieSection>
+          <SimilarMovie id={data.id} />
         </S.SimilarSection>
         <S.Blur />
         <S.BackgroundImage

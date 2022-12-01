@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { Movie } from 'components';
+import { Movie, Layout } from 'components';
 import { useEffect, useState } from 'react';
 import { MovieDataType, MovieType } from 'types/Movie';
 
@@ -29,11 +29,11 @@ const SimilarMovie = ({ id }: UserMovieProps) => {
   }, []);
 
   return (
-    <>
+    <Layout>
       {movies?.map(movie => (
         <Movie key={movie.id} movie={movie} />
       ))}
-    </>
+    </Layout>
   );
 };
 

@@ -1,5 +1,5 @@
 import { LikeMovie } from 'atoms';
-import { Header, UserMovie } from 'components';
+import { Header, UserMovie, Layout } from 'components';
 import { getLocalstorage } from 'hooks';
 import { useEffect, useState } from 'react';
 import { useRecoilState } from 'recoil';
@@ -31,11 +31,11 @@ const UserPage = () => {
         {likeMovie?.length === 0 ? (
           <S.InfoText>저장한 영화가 없습니다.</S.InfoText>
         ) : (
-          <S.MovieSection>
+          <Layout>
             {likeMovie?.map(id => (
               <UserMovie id={id} key={id} />
             ))}
-          </S.MovieSection>
+          </Layout>
         )}
       </S.UserSection>
     </>

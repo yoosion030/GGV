@@ -17,13 +17,6 @@ export const Title = styled.h1`
   margin-bottom: 32px;
 `;
 
-export const MovieSection = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(17vw, auto));
-  justify-content: space-between;
-  row-gap: 56px;
-`;
-
 export const InfoText = styled.p`
   text-align: center;
   margin-top: 300px;

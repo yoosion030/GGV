@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { MovieDataPropsType, MovieType } from 'types/Movie';
-import { Header, Popular, Toggle, Movie, Dropdown } from 'components';
+import { Header, Popular, Toggle, Movie, Dropdown, Layout } from 'components';
 import * as S from './style';
 import { useRecoilState } from 'recoil';
 import { GenreId, Select } from 'atoms';
@@ -43,7 +43,7 @@ const MainPage = ({ playing, upcoming }: MovieDataPropsType) => {
           </S.ToggleSection>
           <Dropdown />
         </S.MainHeader>
-        <S.MovieSection>
+        <Layout>
           {genreId
             ? genreId &&
               setPopularMovies(
@@ -57,7 +57,7 @@ const MainPage = ({ playing, upcoming }: MovieDataPropsType) => {
             : upcomingMovies?.map(movie => (
                 <Movie key={movie.id} movie={movie} />
               ))}
-        </S.MovieSection>
+        </Layout>
       </S.MainSection>
     </>
   );

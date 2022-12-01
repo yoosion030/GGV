@@ -5,6 +5,10 @@ export const DetailSection = styled.div`
   width: 100%;
   height: 100%;
   padding: 180px 9vw 0;
+
+  @media screen and (max-width: 640px) {
+    padding: 180px 5vw 0;
+  }
 `;
 
 export const SimilarSection = styled.div`
@@ -17,13 +21,6 @@ export const SimilarTitle = styled.h1`
   line-height: 38px;
   color: #ffffff;
   margin-bottom: 24px;
-`;
-
-export const SimilarMovieSection = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(17vw, auto));
-  justify-content: space-between;
-  row-gap: 56px;
 `;
 
 export const Blur = styled.div`

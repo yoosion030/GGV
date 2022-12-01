@@ -1,8 +1,10 @@
+import { css } from '@emotion/react';
 import { LikeMovie } from 'atoms';
-import { Header, UserMovie, Layout } from 'components';
+import { Header, UserMovie, Layout, Title } from 'components';
 import { getLocalstorage } from 'hooks';
 import { useEffect, useState } from 'react';
 import { useRecoilState } from 'recoil';
+
 import * as S from './style';
 
 const UserPage = () => {
@@ -27,7 +29,13 @@ const UserPage = () => {
       <Header />
 
       <S.UserSection>
-        <S.Title>{name}님이 고른 영화 🍿</S.Title>
+        <Title
+          style={css`
+            text-align: center;
+          `}
+        >
+          {name}님이 고른 영화 🍿
+        </Title>
         {likeMovie?.length === 0 ? (
           <S.InfoText>저장한 영화가 없습니다.</S.InfoText>
         ) : (

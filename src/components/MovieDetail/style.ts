@@ -4,6 +4,10 @@ export const MovieSection = styled.div`
   display: flex;
   gap: 2.5rem;
   margin-bottom: 2.5rem;
+
+  @media screen and (max-width: 960px) {
+    gap: 1rem;
+  }
 `;
 
 export const TextSection = styled.div`
@@ -15,6 +19,10 @@ export const TextSection = styled.div`
 export const InfoSection = styled.div`
   display: flex;
   gap: 2.5rem;
+
+  @media screen and (max-width: 960px) {
+    gap: 1rem;
+  }
 `;
 
 export const SubTitle = styled.p`
@@ -35,6 +43,10 @@ export const MovieInfoText = styled.p`
   word-break: normal;
   white-space: nowrap;
   text-overflow: ellipsis;
+
+  @media screen and (max-width: 960px) {
+    width: 10rem;
+  }
 `;
 
 export const ButtonSection = styled.div`
@@ -64,7 +76,13 @@ export const LikeButton = styled(button)`
   width: 6.625rem;
   gap: 0.5rem;
   background: #ffffff;
+
   div {
+    width: 1.375rem;
+    height: 1.25rem;
+  }
+
+  svg {
     width: 1.375rem;
     height: 1.25rem;
   }

@@ -16,6 +16,9 @@ export function GlobalStyle() {
         html {
           font-size: 16px;
           @media screen and (max-width: 960px) {
+            font-size: 14px;
+          }
+          @media screen and (max-width: 640px) {
             font-size: 12px;
           }
         }

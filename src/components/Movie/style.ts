@@ -13,6 +13,10 @@ export const Movie = styled.div`
     transition: all 0.1s linear;
   }
 
+  @media screen and (max-width: 1500px) {
+    width: 25vw;
+  }
+
   @media screen and (max-width: 960px) {
     width: 35vw;
   }
@@ -30,6 +34,10 @@ export const MovieInfo = styled.a`
   flex-direction: column;
   justify-content: space-between;
 
+  @media screen and (max-width: 1500px) {
+    width: 25vw;
+  }
+
   @media screen and (max-width: 960px) {
     width: 35vw;
   }
@@ -45,6 +53,10 @@ export const ImageWrapper = styled.div`
   overflow: hidden;
   width: 17vw;
   height: 41vh;
+
+  @media screen and (max-width: 1500px) {
+    width: 25vw;
+  }
 
   @media screen and (max-width: 960px) {
     width: 35vw;

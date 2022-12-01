@@ -6,6 +6,14 @@ export const DetailSection = styled.div`
   height: 100%;
   padding: 11.25rem 9vw 0;
 
+  @media screen and (max-width: 1500px) {
+    padding: 11.25rem 7vw 0;
+  }
+
+  @media screen and (max-width: 960px) {
+    padding: 11.25rem 6vw 0;
+  }
+
   @media screen and (max-width: 640px) {
     padding: 11.25rem 5vw 0;
   }

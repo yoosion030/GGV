@@ -23,7 +23,8 @@ const MainPage = ({ playing, upcoming }: MovieDataPropsType) => {
     selectname !== select &&
     css({
       color: '#8D8D8D',
-      transition: '500ms',
+      transition: 'color 500ms',
+      cursor: 'pointer',
     });
 
   const [genreId] = useRecoilState(GenreId);

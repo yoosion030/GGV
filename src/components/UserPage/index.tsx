@@ -33,6 +33,7 @@ const UserPage = () => {
           style={css`
             text-align: center;
             font-size: 2.5rem;
+            margin-bottom: 4rem;
           `}
         >
           {name}님이 고른 영화 🍿

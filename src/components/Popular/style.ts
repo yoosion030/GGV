@@ -15,6 +15,14 @@ export const Background = styled.div`
     border-radius: 1rem;
   }
 
+  @media screen and (max-width: 1500px) {
+    padding: 15rem 7vw 0;
+  }
+
+  @media screen and (max-width: 960px) {
+    padding: 15rem 6vw 0;
+  }
+
   @media screen and (max-width: 640px) {
     padding: 15rem 5vw 0;
   }

@@ -19,6 +19,14 @@ export const Header = styled.header`
     height: 1.75rem;
   }
 
+  @media screen and (max-width: 1500px) {
+    padding: 0 7vw;
+  }
+
+  @media screen and (max-width: 960px) {
+    padding: 0 6vw;
+  }
+
   @media screen and (max-width: 640px) {
     padding: 0 5vw;
   }

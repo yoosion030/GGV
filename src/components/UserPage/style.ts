@@ -4,6 +4,14 @@ export const UserSection = styled.div`
   width: 100%;
   padding: 9rem 9vw;
 
+  @media screen and (max-width: 1500px) {
+    padding: 9rem 7vw;
+  }
+
+  @media screen and (max-width: 960px) {
+    padding: 9rem 6vw;
+  }
+
   @media screen and (max-width: 640px) {
     padding: 12rem 5vw;
   }

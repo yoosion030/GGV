@@ -37,21 +37,13 @@ const Movie = ({ movie }: MovieProps) => {
   return (
     <S.Movie>
       <S.MovieInfo href={`/movie/${movie.id}`}>
-        <div
-          css={css`
-            position: relative;
-            border-radius: 16px;
-            overflow: hidden;
-            width: 17vw;
-            height: 41vh;
-          `}
-        >
+        <S.ImageWrapper>
           <Image
             layout="fill"
             src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
             alt=""
           />
-        </div>
+        </S.ImageWrapper>
         <S.Title>{movie.title}</S.Title>
         <S.Overview>{movie.overview}</S.Overview>
       </S.MovieInfo>

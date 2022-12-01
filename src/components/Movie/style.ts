@@ -12,6 +12,14 @@ export const Movie = styled.div`
   img {
     transition: all 0.1s linear;
   }
+
+  @media screen and (max-width: 960px) {
+    width: 35vw;
+  }
+
+  @media screen and (max-width: 640px) {
+    width: 70vw;
+  }
 `;
 
 export const MovieInfo = styled.a`
@@ -21,6 +29,30 @@ export const MovieInfo = styled.a`
   display: inline-flex;
   flex-direction: column;
   justify-content: space-between;
+
+  @media screen and (max-width: 960px) {
+    width: 35vw;
+  }
+
+  @media screen and (max-width: 640px) {
+    width: 70vw;
+  }
+`;
+
+export const ImageWrapper = styled.div`
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  width: 17vw;
+  height: 41vh;
+
+  @media screen and (max-width: 960px) {
+    width: 35vw;
+  }
+
+  @media screen and (max-width: 640px) {
+    width: 70vw;
+  }
 `;
 
 export const Title = styled.p`
@@ -46,8 +78,8 @@ export const LikeButton = styled.button`
   position: absolute;
   width: 4vh;
   height: 4vh;
-  left: 14vw;
-  top: 0.5vw;
+  left: 85%;
+  top: 2%;
 
   background: rgba(0, 0, 0, 0.5);
   box-shadow: 0px 5.25px 5.25px rgba(0, 0, 0, 0.25);

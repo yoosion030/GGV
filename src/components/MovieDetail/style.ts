@@ -12,13 +12,6 @@ export const TextSection = styled.div`
   gap: 40px;
 `;
 
-export const Title = styled.h1`
-  font-weight: 700;
-  font-size: 32px;
-  line-height: 46px;
-  color: #ffffff;
-`;
-
 export const InfoSection = styled.div`
   display: flex;
   gap: 40px;

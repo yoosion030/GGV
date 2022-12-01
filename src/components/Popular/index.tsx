@@ -1,4 +1,7 @@
+import { css } from '@emotion/react';
+import { Title } from 'components';
 import Image from 'next/image';
+
 import { MovieType } from 'types/Movie';
 import * as S from './style';
 
@@ -22,7 +25,13 @@ const Popular = ({ movie }: MovieProps) => {
             <S.Number>1</S.Number>
           </S.BestPoster>
           <S.InfoSection>
-            <S.BestTitle>{movie[0].title}</S.BestTitle>
+            <Title
+              style={css`
+                font-size: 40px;
+              `}
+            >
+              {movie[0].title}
+            </Title>
             <hr />
             <S.BestOverview>{movie[0].overview}</S.BestOverview>
             <S.ListSection>

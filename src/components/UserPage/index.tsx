@@ -32,6 +32,7 @@ const UserPage = () => {
         <Title
           style={css`
             text-align: center;
+            font-size: 40px;
           `}
         >
           {name}님이 고른 영화 🍿

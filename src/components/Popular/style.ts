@@ -92,15 +92,6 @@ export const InfoSection = styled.div`
   }
 `;
 
-export const BestTitle = styled.h1`
-  font-family: 'Noto Sans KR';
-  font-style: normal;
-  font-weight: 700;
-  font-size: 40px;
-  line-height: 58px;
-  color: #ffffff;
-`;
-
 export const Movie = styled.a`
   position: relative;
   width: 16vw;

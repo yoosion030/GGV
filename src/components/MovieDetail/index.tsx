@@ -8,6 +8,7 @@ import { handleAnimation } from 'shared/styles/Animation';
 import { useRecoilState } from 'recoil';
 import { LikeMovie } from 'atoms';
 import { getLocalstorage, getUser, HandleLike } from 'hooks';
+import { Title } from 'components';
 
 interface DetailProps {
   movie: MovieDetailType;
@@ -30,7 +31,9 @@ const MovieDetail = ({ movie }: DetailProps) => {
     genres,
     movie?.original_language,
     companies,
-    movie?.budget === 0 ? '알 수 없음' : movie?.budget.toLocaleString('ko-KR') + '원',
+    movie?.budget === 0
+      ? '알 수 없음'
+      : movie?.budget.toLocaleString('ko-KR') + '원',
     movie?.runtime + '분',
   ];
 
@@ -73,9 +76,9 @@ const MovieDetail = ({ movie }: DetailProps) => {
           height={510}
         />
         <S.TextSection>
-          <S.Title>
+          <Title>
             {movie?.title} ({KRData?.title})
-          </S.Title>
+          </Title>
           <S.InfoSection>
             <div>
               {list.map((item, i) => (
@@ -121,7 +124,7 @@ const MovieDetail = ({ movie }: DetailProps) => {
         </S.TextSection>
       </S.MovieSection>
       <S.OverviewSection>
-        <S.Title>줄거리</S.Title>
+        <Title>줄거리</Title>
         <S.SubTitle>
           {KRData?.overview ? KRData.overview : movie?.overview}
         </S.SubTitle>

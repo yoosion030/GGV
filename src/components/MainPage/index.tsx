@@ -1,6 +1,14 @@
 import { useState } from 'react';
 import { MovieDataPropsType, MovieType } from 'types/Movie';
-import { Header, Popular, Toggle, Movie, Dropdown, Layout } from 'components';
+import {
+  Header,
+  Popular,
+  Toggle,
+  Movie,
+  Dropdown,
+  Layout,
+  Title,
+} from 'components';
 import * as S from './style';
 import { useRecoilState } from 'recoil';
 import { GenreId, Select } from 'atoms';
@@ -27,19 +35,19 @@ const MainPage = ({ playing, upcoming }: MovieDataPropsType) => {
       <S.MainSection>
         <S.MainHeader>
           <S.ToggleSection>
-            <S.MainTitle
+            <Title
               onClick={() => setSelect('playing')}
-              css={handleSelectStyle('playing')}
+              style={handleSelectStyle('playing')}
             >
               상영중인 영화
-            </S.MainTitle>
+            </Title>
             <Toggle />
-            <S.MainTitle
+            <Title
               onClick={() => setSelect('upcoming')}
-              css={handleSelectStyle('upcoming')}
+              style={handleSelectStyle('upcoming')}
             >
               상영예정인 영화
-            </S.MainTitle>
+            </Title>
           </S.ToggleSection>
           <Dropdown />
         </S.MainHeader>

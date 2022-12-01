@@ -56,7 +56,7 @@ export const ImageWrapper = styled.div`
 `;
 
 export const Title = styled.p`
-  font-size: 24px;
+  font-size: 1.5rem;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -64,8 +64,8 @@ export const Title = styled.p`
 
 export const Overview = styled.p`
   width: 100%;
-  height: 60px;
-  line-height: 20px;
+  height: 3.75rem;
+  line-height: 1.25rem;
   overflow: hidden;
   text-overflow: ellipsis;
   word-wrap: break-word;
@@ -83,7 +83,7 @@ export const LikeButton = styled.button`
 
   background: rgba(0, 0, 0, 0.5);
   box-shadow: 0px 5.25px 5.25px rgba(0, 0, 0, 0.25);
-  border-radius: 38.0625px;
+  border-radius: 2.375rem;
   border: none;
   cursor: pointer;
   z-index: 3;

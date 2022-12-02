@@ -20,4 +20,8 @@ export interface MovieDataPropsType {
   upcoming: {
     results: MovieType[];
   };
+
+  popular: {
+    results: MovieType[];
+  };
 }

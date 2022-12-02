@@ -6,7 +6,7 @@ import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { getLocalstorage } from 'hooks';
 
-const Home: NextPage<MovieDataPropsType> = ({ playing, upcoming }) => {
+const Home: NextPage<MovieDataPropsType> = ({ playing, upcoming, popular }) => {
   const { push } = useRouter();
 
   useEffect(() => {
@@ -14,11 +14,15 @@ const Home: NextPage<MovieDataPropsType> = ({ playing, upcoming }) => {
     if (!name) push('/register');
   }, []);
 
-  return <MainPage playing={playing} upcoming={upcoming} />;
+  return <MainPage playing={playing} upcoming={upcoming} popular={popular} />;
 };
 
 export const getServerSideProps: GetServerSideProps = async () => {
   try {
+    const popular: MovieDataType = await axios.get(
+      `https://api.themoviedb.org/3/movie/popular/?api_key=${process.env.API_KEY}`,
+    );
+
     const playing: MovieDataType = await axios.get(
       `https://api.themoviedb.org/3/movie/now_playing/?api_key=${process.env.API_KEY}`,
     );
@@ -30,6 +34,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
       props: {
         playing: playing.data,
         upcoming: upcoming.data,
+        popular: popular.data,
       },
     };
   } catch (e) {

@@ -15,7 +15,7 @@ import { GenreId, Select } from 'atoms';
 import { css } from '@emotion/react';
 import { setPopularMovies } from 'hooks';
 
-const MainPage = ({ playing, upcoming }: MovieDataPropsType) => {
+const MainPage = ({ playing, upcoming, popular }: MovieDataPropsType) => {
   const [playingMovies] = useState<MovieType[]>(playing.results);
   const [upcomingMovies] = useState<MovieType[]>(upcoming.results.reverse());
   const [select, setSelect] = useRecoilState(Select);
@@ -32,7 +32,7 @@ const MainPage = ({ playing, upcoming }: MovieDataPropsType) => {
   return (
     <>
       <Header />
-      <Popular movie={playingMovies} />
+      <Popular movie={popular.results} />
       <S.MainSection>
         <S.MainHeader>
           <S.ToggleSection>

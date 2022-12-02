@@ -16,7 +16,7 @@ export const Background = styled.div`
   }
 
   @media screen and (max-width: 1500px) {
-    padding: 15rem 7vw 0;
+    padding: 11.25rem 7vw 0;
   }
 
   @media screen and (max-width: 960px) {

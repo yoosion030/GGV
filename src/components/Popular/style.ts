@@ -20,11 +20,12 @@ export const Background = styled.div`
   }
 
   @media screen and (max-width: 960px) {
-    padding: 15rem 6vw 0;
+    padding: 15rem 6vw;
+    height: 100%;
   }
 
   @media screen and (max-width: 640px) {
-    padding: 15rem 5vw 0;
+    padding: 15rem 5vw;
   }
 `;
 
@@ -37,12 +38,16 @@ export const Blur = styled.div`
   background: rgba(0, 0, 0, 0.3);
   backdrop-filter: blur(10px);
   z-index: -2;
+
+  @media screen and (max-width: 960px) {
+    height: 100%;
+  }
 `;
 
 export const PopularSection = styled.div`
   overflow: hidden;
   display: flex;
-  gap: 2.3vw;
+  gap: 1.5rem;
 
   animation-duration: 1s;
   animation-name: slidedown;
@@ -56,12 +61,20 @@ export const PopularSection = styled.div`
       margin-top: 0%;
     }
   }
+
+  @media screen and (max-width: 960px) {
+    flex-direction: column;
+  }
 `;
 
 export const BestPoster = styled.a`
   width: 25vw;
   height: 66vh;
   position: relative;
+
+  @media screen and (max-width: 960px) {
+    width: 100%;
+  }
 `;
 
 export const BestIcon = styled.div`
@@ -103,18 +116,6 @@ export const InfoSection = styled.div`
     margin: 1rem 0;
   }
 `;
-
-export const Movie = styled.a`
-  position: relative;
-  width: 16vw;
-  height: 41vh;
-`;
-
-export const BestOverview = styled.p`
-  color: #d0d0d0;
-  height: 21vh;
-`;
-
 export const ListSection = styled.div`
   display: flex;
   justify-content: space-between;
@@ -132,5 +133,34 @@ export const ListSection = styled.div`
       margin-left: 0%;
       width: 100%;
     }
+  }
+
+  @media screen and (max-width: 640px) {
+    flex-direction: column;
+    align-items: center;
+  }
+`;
+
+export const BestOverview = styled.p`
+  color: #d0d0d0;
+  height: 21vh;
+
+  @media screen and (max-width: 960px) {
+    height: 10vh;
+  }
+`;
+
+export const Movie = styled.a`
+  position: relative;
+  width: 16vw;
+  height: 41vh;
+
+  @media screen and (max-width: 960px) {
+    width: 30%;
+  }
+
+  @media screen and (max-width: 640px) {
+    width: 70vw;
+    margin: 3rem 0;
   }
 `;

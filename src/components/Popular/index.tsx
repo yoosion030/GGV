@@ -1,7 +1,6 @@
 import { css } from '@emotion/react';
 import { Title } from 'components';
 import Image from 'next/image';
-
 import { MovieType } from 'types/Movie';
 import * as S from './style';
 
@@ -20,6 +19,7 @@ const Popular = ({ movie }: MovieProps) => {
               src={`https://image.tmdb.org/t/p/w500${movie[0].poster_path}`}
               layout="fill"
               alt=""
+              quality={100}
             />
             <S.BestIcon>Best</S.BestIcon>
             <S.Number>1</S.Number>

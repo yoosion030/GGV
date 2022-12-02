@@ -19,6 +19,7 @@ export const Movie = styled.div`
 
   @media screen and (max-width: 960px) {
     width: 35vw;
+    height: 50vh;
   }
 
   @media screen and (max-width: 640px) {

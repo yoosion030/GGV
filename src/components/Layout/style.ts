@@ -4,7 +4,7 @@ export const Layout = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(17vw, auto));
   justify-content: space-between;
-  row-gap: 3.2vw;
+  row-gap: 3rem;
 
   @media screen and (max-width: 1500px) {
     grid-template-columns: repeat(auto-fill, minmax(25vw, auto));

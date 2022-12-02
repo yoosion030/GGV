@@ -95,4 +95,10 @@ export const OverviewSection = styled.div`
   p {
     width: 80%;
   }
+
+  @media screen and (max-width: 640px) {
+    p {
+      width: 100%;
+    }
+  }
 `;

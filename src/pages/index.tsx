@@ -10,8 +10,7 @@ const Home: NextPage<MovieDataPropsType> = ({ playing, upcoming, popular }) => {
   const { push } = useRouter();
 
   useEffect(() => {
-    const name = getLocalstorage('name');
-    if (!name) push('/register');
+    if (!getLocalstorage('name')) push('/register');
   }, []);
 
   return <MainPage playing={playing} upcoming={upcoming} popular={popular} />;

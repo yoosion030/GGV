@@ -18,9 +18,6 @@ import axios from 'axios';
 import { SelectType } from 'types/Select';
 
 const MainPage = ({ playing, upcoming, popular }: MovieDataPropsType) => {
-  const [upcomingMovies, setUpcomingMovies] = useState<MovieType[]>(
-    upcoming.reverse(),
-  );
   const [select, setSelect] = useRecoilState(Select);
   const handleSelectStyle = (selectname: SelectType) =>
     selectname !== select &&
@@ -31,57 +28,89 @@ const MainPage = ({ playing, upcoming, popular }: MovieDataPropsType) => {
     });
 
   const [genreId] = useRecoilState(GenreId);
-  const pageNumber = useRef<number>(2);
-  const [movies, setMovies] = useState<MovieType[]>(playing);
-  const [loading, setLoading] = useState<boolean>(false);
-  const [hasMore, setHasMore] = useState<boolean>(true);
 
-  const getMovies = useCallback(async () => {
-    console.log(select);
+  const [playingMovies, setPlayingMovies] = useState<MovieType[]>(playing);
+  const [upcomingMovies, setUpcomingMovies] = useState<MovieType[]>(
+    upcoming.reverse(),
+  );
+
+  const playingPageNumber = useRef<number>(2);
+  const upcomingPageNumber = useRef<number>(2);
+
+  const [loading, setLoading] = useState<boolean>(false);
+
+  const getPlayingMovies = useCallback(async () => {
     try {
       setLoading(true);
       const res: MovieDataType = await axios.get(
-        `${process.env.BASE_URL}/${select}/?api_key=${process.env.API_KEY}&page=${pageNumber.current}`,
+        `${process.env.BASE_URL}/now_playing/?api_key=${process.env.API_KEY}&page=${playingPageNumber.current}`,
       );
 
-      setMovies((prevPosts: MovieType[]) => [
+      setPlayingMovies((prevPosts: MovieType[]) => [
         ...prevPosts,
         ...res.data.results,
       ]);
       setLoading(false);
 
-      setLoading(false);
-
-      if (movies.length <= 100) {
-        pageNumber.current += 1;
+      if (playingMovies.length <= 100) {
+        playingPageNumber.current += 1;
       }
     } catch (e: any) {
       console.log(e);
     }
-  }, []);
+  }, [playingMovies.length]);
 
-  useEffect(() => {
-    if (movies.length >= 100) {
-      setHasMore(false);
+  const getUpcomingMovies = useCallback(async () => {
+    try {
+      setLoading(true);
+      const res: MovieDataType = await axios.get(
+        `${process.env.BASE_URL}/upcoming/?api_key=${process.env.API_KEY}&page=${upcomingPageNumber.current}`,
+      );
+
+      setUpcomingMovies((prevPosts: MovieType[]) => [
+        ...prevPosts,
+        ...res.data.results,
+      ]);
+      setLoading(false);
+
+      if (upcomingMovies.length <= 100) {
+        upcomingPageNumber.current += 1;
+      }
+    } catch (e: any) {
+      console.log(e);
     }
-  }, [movies]);
+  }, [upcomingMovies.length]);
 
-  const lastMovieElementRef = useRef<HTMLDivElement>(null);
+  const lastPlayingMovieElementRef = useRef<HTMLDivElement>(null);
+  const lastUpcomingMovieElementRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    console.log(lastMovieElementRef.current);
-    if (!lastMovieElementRef.current || !hasMore) return;
+    if (!lastPlayingMovieElementRef.current || playingMovies.length >= 100)
+      return;
 
     const io = new IntersectionObserver((entries, observer) => {
-      console.log(entries);
       if (entries[0].isIntersecting && !loading) {
-        getMovies();
+        getPlayingMovies();
       }
     });
 
-    io.observe(lastMovieElementRef.current);
+    io.observe(lastPlayingMovieElementRef.current);
     return () => io.disconnect();
-  }, [getMovies, hasMore, loading, select]);
+  }, [getPlayingMovies, loading, playingMovies.length, select]);
+
+  useEffect(() => {
+    if (!lastUpcomingMovieElementRef.current || upcomingMovies.length >= 100)
+      return;
+
+    const io = new IntersectionObserver((entries, observer) => {
+      if (entries[0].isIntersecting && !loading) {
+        getUpcomingMovies();
+      }
+    });
+
+    io.observe(lastUpcomingMovieElementRef.current);
+    return () => io.disconnect();
+  }, [getUpcomingMovies, loading, select, upcomingMovies.length]);
 
   return (
     <>
@@ -107,17 +136,27 @@ const MainPage = ({ playing, upcoming, popular }: MovieDataPropsType) => {
           <Dropdown />
         </S.MainHeader>
         <Layout>
-          {genreId
-            ? genreId &&
-              setPopularMovies(movies, genreId).map((movie, i) => (
-                <Movie key={movie.id} movie={movie} />
-              ))
-            : select === 'now_playing'
-            ? movies?.map(movie => <Movie key={movie.id} movie={movie} />)
-            : upcomingMovies?.map(movie => (
+          {genreId ? (
+            genreId &&
+            setPopularMovies(
+              select === 'now_playing' ? playingMovies : upcomingMovies,
+              genreId,
+            ).map((movie, i) => <Movie key={movie.id} movie={movie} />)
+          ) : select === 'now_playing' ? (
+            <>
+              {playingMovies?.map(movie => (
                 <Movie key={movie.id} movie={movie} />
               ))}
-          <div ref={lastMovieElementRef}></div>
+              <div ref={lastPlayingMovieElementRef}></div>
+            </>
+          ) : (
+            <>
+              {upcomingMovies?.map(movie => (
+                <Movie key={movie.id} movie={movie} />
+              ))}
+              <div ref={lastUpcomingMovieElementRef}></div>
+            </>
+          )}
         </Layout>
       </S.MainSection>
     </>

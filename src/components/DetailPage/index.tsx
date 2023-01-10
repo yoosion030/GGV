@@ -1,5 +1,5 @@
 import { css } from '@emotion/react';
-import { Header, MovieDetail, SimilarMovie, Title } from 'components';
+import { Header, MovieDetail, SimilarMovie, Title, Layout } from 'components';
 import { useState } from 'react';
 import { MovieDetailDataType, MovieDetailType } from 'types/MovieDetail';
 import * as S from './style';
@@ -14,7 +14,9 @@ const DetailPage = ({ data }: MovieDetailDataType) => {
         <MovieDetail movie={movie} />
         <S.SimilarSection>
           <Title>비슷한 영화</Title>
-          <SimilarMovie id={data.id} />
+          <Layout>
+            <SimilarMovie id={data.id} />
+          </Layout>
         </S.SimilarSection>
         <S.Blur />
         <S.BackgroundImage

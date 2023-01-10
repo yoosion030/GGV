@@ -37,49 +37,39 @@ const MainPage = ({ playing, upcoming, popular }: MovieDataPropsType) => {
   const playingPageNumber = useRef<number>(2);
   const upcomingPageNumber = useRef<number>(2);
 
-  const [loading, setLoading] = useState<boolean>(false);
-
   const getPlayingMovies = useCallback(async () => {
     try {
-      setLoading(true);
-      const res: MovieDataType = await axios.get(
+      const { data }: MovieDataType = await axios.get(
         `${process.env.BASE_URL}/now_playing/?api_key=${process.env.API_KEY}&page=${playingPageNumber.current}`,
       );
 
-      setPlayingMovies((prevPosts: MovieType[]) => [
-        ...prevPosts,
-        ...res.data.results,
+      setPlayingMovies((prevMovies: MovieType[]) => [
+        ...prevMovies,
+        ...data.results,
       ]);
-      setLoading(false);
 
-      if (playingMovies.length <= 100) {
-        playingPageNumber.current += 1;
-      }
+      playingPageNumber.current += 1;
     } catch (e: any) {
       console.log(e);
     }
-  }, [playingMovies.length]);
+  }, []);
 
   const getUpcomingMovies = useCallback(async () => {
     try {
-      setLoading(true);
-      const res: MovieDataType = await axios.get(
+      const { data }: MovieDataType = await axios.get(
         `${process.env.BASE_URL}/upcoming/?api_key=${process.env.API_KEY}&page=${upcomingPageNumber.current}`,
       );
 
-      setUpcomingMovies((prevPosts: MovieType[]) => [
-        ...prevPosts,
-        ...res.data.results,
+      setUpcomingMovies((prevMovies: MovieType[]) => [
+        ...prevMovies,
+        ...data.results,
       ]);
-      setLoading(false);
 
-      if (upcomingMovies.length <= 100) {
-        upcomingPageNumber.current += 1;
-      }
+      upcomingPageNumber.current += 1;
     } catch (e: any) {
       console.log(e);
     }
-  }, [upcomingMovies.length]);
+  }, []);
 
   const lastPlayingMovieElementRef = useRef<HTMLDivElement>(null);
   const lastUpcomingMovieElementRef = useRef<HTMLDivElement>(null);
@@ -89,28 +79,28 @@ const MainPage = ({ playing, upcoming, popular }: MovieDataPropsType) => {
       return;
 
     const io = new IntersectionObserver((entries, observer) => {
-      if (entries[0].isIntersecting && !loading) {
+      if (entries[0].isIntersecting) {
         getPlayingMovies();
       }
     });
 
     io.observe(lastPlayingMovieElementRef.current);
     return () => io.disconnect();
-  }, [getPlayingMovies, loading, playingMovies.length, select]);
+  }, [getPlayingMovies, select, playingMovies.length]);
 
   useEffect(() => {
     if (!lastUpcomingMovieElementRef.current || upcomingMovies.length >= 100)
       return;
 
     const io = new IntersectionObserver((entries, observer) => {
-      if (entries[0].isIntersecting && !loading) {
+      if (entries[0].isIntersecting) {
         getUpcomingMovies();
       }
     });
 
     io.observe(lastUpcomingMovieElementRef.current);
     return () => io.disconnect();
-  }, [getUpcomingMovies, loading, select, upcomingMovies.length]);
+  }, [getUpcomingMovies, select, upcomingMovies.length]);
 
   return (
     <>

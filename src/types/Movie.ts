@@ -14,14 +14,7 @@ export interface MovieType {
 }
 
 export interface MovieDataPropsType {
-  playing: {
-    results: MovieType[];
-  };
-  upcoming: {
-    results: MovieType[];
-  };
-
-  popular: {
-    results: MovieType[];
-  };
+  playing: MovieType[];
+  upcoming: MovieType[];
+  popular: MovieType[];
 }

@@ -1,12 +1,5 @@
 import { MovieType } from 'types/Movie';
 
-interface MovieDataPropsType {
-  results: MovieType[];
-}
-
-export const setPopularMovies = (
-  popular: MovieDataPropsType,
-  genreId: number,
-) => {
-  return popular.results.filter(val => val.genre_ids.includes(genreId));
+export const setPopularMovies = (popular: MovieType[], genreId: number) => {
+  return popular.filter(val => val.genre_ids.includes(genreId));
 };

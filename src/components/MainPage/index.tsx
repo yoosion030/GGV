@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { MovieDataPropsType, MovieType } from 'types/Movie';
+import { useCallback, useEffect, useRef, useState } from 'react';
+import { MovieDataPropsType, MovieDataType, MovieType } from 'types/Movie';
 import {
   Header,
   Popular,
@@ -14,12 +14,15 @@ import { useRecoilState } from 'recoil';
 import { GenreId, Select } from 'atoms';
 import { css } from '@emotion/react';
 import { setPopularMovies } from 'hooks';
+import axios from 'axios';
+import { SelectType } from 'types/Select';
 
 const MainPage = ({ playing, upcoming, popular }: MovieDataPropsType) => {
-  const [playingMovies] = useState<MovieType[]>(playing.results);
-  const [upcomingMovies] = useState<MovieType[]>(upcoming.results.reverse());
+  const [upcomingMovies, setUpcomingMovies] = useState<MovieType[]>(
+    upcoming.reverse(),
+  );
   const [select, setSelect] = useRecoilState(Select);
-  const handleSelectStyle = (selectname: 'playing' | 'upcoming') =>
+  const handleSelectStyle = (selectname: SelectType) =>
     selectname !== select &&
     css({
       color: '#8D8D8D',
@@ -28,17 +31,68 @@ const MainPage = ({ playing, upcoming, popular }: MovieDataPropsType) => {
     });
 
   const [genreId] = useRecoilState(GenreId);
+  const pageNumber = useRef<number>(2);
+  const [movies, setMovies] = useState<MovieType[]>(playing);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [hasMore, setHasMore] = useState<boolean>(true);
+
+  const getMovies = useCallback(async () => {
+    console.log(select);
+    try {
+      setLoading(true);
+      const res: MovieDataType = await axios.get(
+        `${process.env.BASE_URL}/${select}/?api_key=${process.env.API_KEY}&page=${pageNumber.current}`,
+      );
+
+      setMovies((prevPosts: MovieType[]) => [
+        ...prevPosts,
+        ...res.data.results,
+      ]);
+      setLoading(false);
+
+      setLoading(false);
+
+      if (movies.length <= 100) {
+        pageNumber.current += 1;
+      }
+    } catch (e: any) {
+      console.log(e);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (movies.length >= 100) {
+      setHasMore(false);
+    }
+  }, [movies]);
+
+  const lastMovieElementRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    console.log(lastMovieElementRef.current);
+    if (!lastMovieElementRef.current || !hasMore) return;
+
+    const io = new IntersectionObserver((entries, observer) => {
+      console.log(entries);
+      if (entries[0].isIntersecting && !loading) {
+        getMovies();
+      }
+    });
+
+    io.observe(lastMovieElementRef.current);
+    return () => io.disconnect();
+  }, [getMovies, hasMore, loading, select]);
 
   return (
     <>
       <Header />
-      <Popular movie={popular.results} />
+      <Popular movie={popular} />
       <S.MainSection>
         <S.MainHeader>
           <S.ToggleSection>
             <Title
-              onClick={() => setSelect('playing')}
-              style={handleSelectStyle('playing')}
+              onClick={() => setSelect('now_playing')}
+              style={handleSelectStyle('now_playing')}
             >
               상영중인 영화
             </Title>
@@ -55,17 +109,15 @@ const MainPage = ({ playing, upcoming, popular }: MovieDataPropsType) => {
         <Layout>
           {genreId
             ? genreId &&
-              setPopularMovies(
-                select === 'playing' ? playing : upcoming,
-                genreId,
-              ).map((movie, i) => <Movie key={movie.id} movie={movie} />)
-            : select === 'playing'
-            ? playingMovies?.map(movie => (
+              setPopularMovies(movies, genreId).map((movie, i) => (
                 <Movie key={movie.id} movie={movie} />
               ))
+            : select === 'now_playing'
+            ? movies?.map(movie => <Movie key={movie.id} movie={movie} />)
             : upcomingMovies?.map(movie => (
                 <Movie key={movie.id} movie={movie} />
               ))}
+          <div ref={lastMovieElementRef}></div>
         </Layout>
       </S.MainSection>
     </>

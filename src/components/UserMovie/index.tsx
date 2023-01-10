@@ -16,7 +16,7 @@ const UserMovie = ({ id }: UserMovieProps) => {
   const getData = async () => {
     try {
       const { data }: MovieDetailDataType = await axios.get(
-        `https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.API_KEY}`,
+        `${process.env.BASE_URL}/${id}?api_key=${process.env.API_KEY}`,
       );
       setMovie(data);
     } catch (e) {

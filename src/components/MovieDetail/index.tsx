@@ -41,7 +41,7 @@ const MovieDetail = ({ movie }: DetailProps) => {
     // 번역본 가져오기
     try {
       const { data }: MovieDetailDataType = await axios.get(
-        `https://api.themoviedb.org/3/movie/${movie?.id}?api_key=${process.env.API_KEY}&language=ko-KR`,
+        `${process.env.BASE_URL}/${movie?.id}?api_key=${process.env.API_KEY}&language=ko-KR`,
       );
 
       setKRData(data);

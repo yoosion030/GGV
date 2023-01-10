@@ -16,7 +16,7 @@ const SimilarMovie = ({ id }: UserMovieProps) => {
   const getData = async () => {
     try {
       const { data }: MovieDataType = await axios.get(
-        `https://api.themoviedb.org/3/movie/${id}/similar?api_key=${process.env.API_KEY}`,
+        `${process.env.BASE_URL}/${id}/similar?api_key=${process.env.API_KEY}`,
       );
       setMovies(data.results);
     } catch (e) {

@@ -10,7 +10,7 @@ const detail: NextPage<MovieDetailDataType> = ({ data }) => {
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   try {
     const { data }: MovieDetailDataType = await axios.get(
-      `https://api.themoviedb.org/3/movie/${params?.id}?api_key=${process.env.API_KEY}`,
+      `${process.env.BASE_URL}/${params?.id}?api_key=${process.env.API_KEY}`,
     );
 
     return {

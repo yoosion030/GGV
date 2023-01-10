@@ -5,7 +5,7 @@ import * as S from './style';
 const Toggle = () => {
   const [select, setSelect] = useRecoilState(Select);
   const handletoggle = () => {
-    return select === 'playing' ? 'upcoming' : 'playing';
+    return select === 'now_playing' ? 'upcoming' : 'now_playing';
   };
   return (
     <S.ToggleButton

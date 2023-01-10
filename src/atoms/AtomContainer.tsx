@@ -1,4 +1,5 @@
 import { atom } from 'recoil';
+import { SelectType } from 'types/Select';
 
 /**
  * 좋아요 누른 영화 아이디 배열
@@ -11,9 +12,9 @@ export const LikeMovie = atom<number[] | null | undefined>({
 /**
  * 상영 예정 / 상영 중 영화 선택
  */
-export const Select = atom<'playing' | 'upcoming'>({
+export const Select = atom<SelectType>({
   key: 'Select',
-  default: 'playing',
+  default: 'now_playing',
 });
 
 /**

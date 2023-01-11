@@ -40,7 +40,7 @@ const MainPage = ({ playing, upcoming, popular }: MovieDataPropsType) => {
   const getPlayingMovies = useCallback(async () => {
     try {
       const { data }: MovieDataType = await axios.get(
-        `${process.env.BASE_URL}/now_playing/?api_key=${process.env.API_KEY}&page=${playingPageNumber.current}`,
+        `${process.env.BASE_URL}/now_playing?api_key=${process.env.API_KEY}&page=${playingPageNumber.current}`,
       );
 
       setPlayingMovies((prevMovies: MovieType[]) => [
@@ -57,7 +57,7 @@ const MainPage = ({ playing, upcoming, popular }: MovieDataPropsType) => {
   const getUpcomingMovies = useCallback(async () => {
     try {
       const { data }: MovieDataType = await axios.get(
-        `${process.env.BASE_URL}/upcoming/?api_key=${process.env.API_KEY}&page=${upcomingPageNumber.current}`,
+        `${process.env.BASE_URL}/upcoming?api_key=${process.env.API_KEY}&page=${upcomingPageNumber.current}`,
       );
 
       setUpcomingMovies((prevMovies: MovieType[]) => [

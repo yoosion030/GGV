@@ -19,14 +19,14 @@ const Home: NextPage<MovieDataPropsType> = ({ playing, upcoming, popular }) => {
 export const getServerSideProps: GetServerSideProps = async () => {
   try {
     const popular: MovieDataType = await axios.get(
-      `${process.env.BASE_URL}/popular/?api_key=${process.env.API_KEY}`,
+      `${process.env.BASE_URL}/popular?api_key=${process.env.API_KEY}`,
     );
 
     const playing: MovieDataType = await axios.get(
-      `${process.env.BASE_URL}/now_playing/?api_key=${process.env.API_KEY}`,
+      `${process.env.BASE_URL}/now_playing?api_key=${process.env.API_KEY}`,
     );
     const upcoming: MovieDataType = await axios.get(
-      `${process.env.BASE_URL}/upcoming/?api_key=${process.env.API_KEY}`,
+      `${process.env.BASE_URL}/upcoming?api_key=${process.env.API_KEY}`,
     );
 
     return {

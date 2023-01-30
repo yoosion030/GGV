@@ -1,6 +1,6 @@
 import type { AppProps } from 'next/app';
 import { GlobalStyle } from 'shared/styles/GlobalStyle';
-import { RecoilRoot } from 'recoil';
+
 import Head from 'next/head';
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -10,9 +10,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <title>GGV</title>
       </Head>
       <GlobalStyle />
-      <RecoilRoot>
-        <Component {...pageProps} />
-      </RecoilRoot>
+      <Component {...pageProps} />
     </>
   );
 }

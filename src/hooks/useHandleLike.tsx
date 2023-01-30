@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction } from 'react';
-import { SetterOrUpdater } from 'recoil';
+
 import { MovieType } from 'types/Movie';
 import { MovieDetailType } from 'types/MovieDetail';
 import { setLocalstorage } from './setLocalstorage';
@@ -13,7 +13,7 @@ export const HandleLike = (
   movie: MovieDetailType | MovieType,
   user: string | undefined,
   likeMovie: number[] | null | undefined,
-  setLikeMovie: SetterOrUpdater<number[] | null | undefined>,
+  setLikeMovie: Dispatch<SetStateAction<number[] | null | undefined>>,
 ) => {
   setIsLike(!isLike);
 

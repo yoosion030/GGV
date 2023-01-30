@@ -3,13 +3,13 @@ import { LikeMovie } from 'atoms';
 import { Header, UserMovie, Layout, Title } from 'components';
 import { getLocalstorage } from 'hooks';
 import { useEffect, useState } from 'react';
-import { useRecoilState } from 'recoil';
+import { useAtom } from 'jotai';
 
 import * as S from './style';
 
 const UserPage = () => {
   const [name, setName] = useState<string | null>('');
-  const [likeMovie, setLikeMovie] = useRecoilState(LikeMovie);
+  const [likeMovie, setLikeMovie] = useAtom(LikeMovie);
 
   useEffect(() => {
     const userInfo = ['year', 'month', 'date', 'name']

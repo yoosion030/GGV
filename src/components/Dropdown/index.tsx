@@ -1,7 +1,7 @@
 import { css } from '@emotion/react';
 import { GenreId } from 'atoms';
 import { useEffect, useState } from 'react';
-import { useRecoilState } from 'recoil';
+import { useAtom } from 'jotai';
 import * as S from './style';
 
 interface MenuItemType {
@@ -13,7 +13,7 @@ const Dropdown = () => {
   const [dropdownVisibility, setDropdownVisibility] = useState<boolean>(false);
   const [visibilityAnimation, setVisibilityAnimation] =
     useState<boolean>(false);
-  const [genreId, setGenreId] = useRecoilState(GenreId);
+  const [genreId, setGenreId] = useAtom(GenreId);
 
   const menuItemObject: MenuItemType[] = [
     { title: '로맨스', id: 10749 },

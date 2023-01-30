@@ -1,9 +1,9 @@
 import { Select } from 'atoms';
-import { useRecoilState } from 'recoil';
+import { useAtom } from 'jotai';
 import * as S from './style';
 
 const Toggle = () => {
-  const [select, setSelect] = useRecoilState(Select);
+  const [select, setSelect] = useAtom(Select);
   const handletoggle = () => {
     return select === 'now_playing' ? 'upcoming' : 'now_playing';
   };

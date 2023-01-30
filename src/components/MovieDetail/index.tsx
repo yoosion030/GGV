@@ -5,10 +5,10 @@ import { MovieDetailDataType, MovieDetailType } from 'types/MovieDetail';
 import * as S from './style';
 import * as I from 'assets/svg';
 import { handleAnimation } from 'shared/styles/Animation';
-import { useRecoilState } from 'recoil';
 import { LikeMovie } from 'atoms';
 import { getLocalstorage, getUser, HandleLike } from 'hooks';
 import { Title } from 'components';
+import { useAtom } from 'jotai';
 
 interface DetailProps {
   movie: MovieDetailType;
@@ -17,7 +17,7 @@ interface DetailProps {
 const MovieDetail = ({ movie }: DetailProps) => {
   const [KRData, setKRData] = useState<MovieDetailType>();
   const [isLike, setIsLike] = useState<boolean>(false);
-  const [likeMovie, setLikeMovie] = useRecoilState(LikeMovie); // 좋아요 누른 영화 아이디 배열
+  const [likeMovie, setLikeMovie] = useAtom(LikeMovie); // 좋아요 누른 영화 아이디 배열
   const [user, setUser] = useState<string>();
   const list = ['개봉', '장르', '국가', '회사', '예산', '러닝타임'];
   // 배열 정렬

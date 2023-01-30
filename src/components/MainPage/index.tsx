@@ -10,15 +10,16 @@ import {
   Title,
 } from 'components';
 import * as S from './style';
-import { useRecoilState } from 'recoil';
+
 import { GenreId, Select } from 'atoms';
 import { css } from '@emotion/react';
 import { setPopularMovies } from 'hooks';
 import axios from 'axios';
 import { SelectType } from 'types/Select';
+import { useAtom, useAtomValue } from 'jotai';
 
 const MainPage = ({ playing, upcoming, popular }: MovieDataPropsType) => {
-  const [select, setSelect] = useRecoilState(Select);
+  const [select, setSelect] = useAtom(Select);
   const handleSelectStyle = (selectname: SelectType) =>
     selectname !== select &&
     css({
@@ -27,7 +28,7 @@ const MainPage = ({ playing, upcoming, popular }: MovieDataPropsType) => {
       cursor: 'pointer',
     });
 
-  const [genreId] = useRecoilState(GenreId);
+  const genreId = useAtomValue(GenreId);
 
   const [playingMovies, setPlayingMovies] = useState<MovieType[]>(playing);
   const [upcomingMovies, setUpcomingMovies] = useState<MovieType[]>(

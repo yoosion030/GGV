@@ -20,7 +20,7 @@ $ yarn dev
 ```
 - Next.js + TypeScript
 - axios
-- Recoil
+- jotai
 - React-hook-form
 - Emotion
 - IntersectionObserver

@@ -19,6 +19,7 @@ $ yarn dev
 
 ```
 - Next.js + TypeScript
+- axios
 - Recoil
 - React-hook-form
 - Emotion

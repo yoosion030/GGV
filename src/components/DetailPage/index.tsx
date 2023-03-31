@@ -18,10 +18,12 @@ const DetailPage = ({ data }: MovieDetailDataType) => {
             <SimilarMovie id={data.id} />
           </Layout>
         </S.SimilarSection>
-        <S.Blur />
-        <S.BackgroundImage
+        <S.Blur
           css={css`
             background-image: url('https://image.tmdb.org/t/p/w500${movie?.poster_path}');
+            opacity: 0.3;
+            z-index: -1;
+            filter: blur(30px);
           `}
         />
       </S.DetailSection>

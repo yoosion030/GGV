@@ -2,7 +2,7 @@
 
 ### Description
 
-GGV는 해외 영화 소개 서비스 입니다. 사용자 친화적인 UI/UX로 간편하게 영화롤 조회할 수 있습니다.
+GGV는 해외 영화 소개 서비스 입니다. 사용자 친화적인 UI/UX로 간편하게 영화를 조회할 수 있습니다.
 
 ![](public/MockUp2.png)
 ![](public/MockUp.png)

@@ -3,7 +3,6 @@ import styled from '@emotion/styled';
 export const DetailSection = styled.div`
   position: relative;
   width: 100%;
-  min-width: 100vw;
   min-height: 100vh;
   height: 100%;
   padding: 11.25rem 9vw 0;

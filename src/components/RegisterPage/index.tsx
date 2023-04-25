@@ -48,8 +48,8 @@ const RegisterPage = () => {
             css={css`
               width: 100%;
             `}
-            placeholder="이름을 입력해주세요!"
-            {...register('name', { required: true })}
+            placeholder="이름을 입력해주세요! (5자 이내)"
+            {...register('name', { required: true, maxLength: 5 })}
             errorStyle={errors.name}
           />
 

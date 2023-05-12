@@ -7,9 +7,11 @@ import { getLocalstorage } from 'hooks';
 const Header = () => {
   const [name, setName] = useState<string | null>('');
   const { push } = useRouter();
+
   useEffect(() => {
     setName(getLocalstorage('name'));
   }, []);
+
   return (
     <S.Header>
       <S.Nav>

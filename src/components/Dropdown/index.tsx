@@ -24,6 +24,7 @@ const Dropdown = () => {
     { title: '코미디', id: 35 },
     { title: '선택해제', id: null },
   ];
+
   const selectItem = (id: number | null) =>
     genreId === id &&
     id !== null &&
@@ -44,7 +45,7 @@ const Dropdown = () => {
 
   return (
     <>
-      <S.Dropdown onClick={e => setDropdownVisibility(!dropdownVisibility)}>
+      <S.Dropdown onClick={() => setDropdownVisibility(!dropdownVisibility)}>
         필터
       </S.Dropdown>
       {visibilityAnimation && (

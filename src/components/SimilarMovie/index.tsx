@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { Movie, Layout } from 'components';
+import { Movie } from 'components';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { MovieDataType, MovieType } from 'types/Movie';
 

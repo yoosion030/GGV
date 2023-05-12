@@ -1,7 +1,7 @@
 import axios from 'axios';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
-import { MovieDetailDataType, MovieDetailType } from 'types/MovieDetail';
+import { MovieDetailType } from 'types/MovieDetail';
 import * as S from './style';
 import * as I from 'assets/svg';
 import { handleAnimation } from 'shared/styles/Animation';
@@ -9,20 +9,31 @@ import { LikeMovie } from 'atoms';
 import { getLocalstorage, getUser, HandleLike } from 'hooks';
 import { Title } from 'components';
 import { useAtom } from 'jotai';
+import { useQuery } from 'react-query';
 
 interface DetailProps {
   movie: MovieDetailType;
 }
 
 const MovieDetail = ({ movie }: DetailProps) => {
-  const [KRData, setKRData] = useState<MovieDetailType>();
   const [isLike, setIsLike] = useState<boolean>(false);
   const [likeMovie, setLikeMovie] = useAtom(LikeMovie); // 좋아요 누른 영화 아이디 배열
   const [user, setUser] = useState<string>();
   const list = ['개봉', '장르', '국가', '회사', '예산', '러닝타임'];
-  // 배열 정렬
-  const genres = KRData?.genres.map(value => value.name).join(', ');
-  const companies = KRData?.production_companies
+
+  const getKoreaMovieDetail = () => {
+    return axios.get<MovieDetailType>(
+      `${process.env.BASE_URL}/${movie?.id}?api_key=${process.env.API_KEY}&language=ko-KR`,
+    );
+  };
+
+  const { data, isLoading } = useQuery(
+    `getDetailKoreaMovie-${movie.id}`,
+    getKoreaMovieDetail,
+  );
+
+  const genres = data?.data.genres.map(value => value.name).join(', ');
+  const companies = data?.data.production_companies
     .map(value => value.name)
     .join(', ');
 
@@ -36,23 +47,6 @@ const MovieDetail = ({ movie }: DetailProps) => {
       : movie?.budget.toLocaleString('ko-KR') + '원',
     movie?.runtime + '분',
   ];
-
-  const getKRData = async () => {
-    // 번역본 가져오기
-    try {
-      const { data }: MovieDetailDataType = await axios.get(
-        `${process.env.BASE_URL}/${movie?.id}?api_key=${process.env.API_KEY}&language=ko-KR`,
-      );
-
-      setKRData(data);
-    } catch (e) {
-      console.log(e);
-    }
-  };
-
-  useEffect(() => {
-    getKRData();
-  }, [movie]);
 
   useEffect(() => {
     // 로컬스토리지에 저장된 유저 정보 가져오기
@@ -77,7 +71,7 @@ const MovieDetail = ({ movie }: DetailProps) => {
         />
         <S.TextSection>
           <Title>
-            {movie?.title} ({KRData?.title})
+            {movie?.title} ({data?.data.title})
           </Title>
           <S.InfoSection>
             <div>
@@ -126,7 +120,7 @@ const MovieDetail = ({ movie }: DetailProps) => {
       <S.OverviewSection>
         <Title>줄거리</Title>
         <S.SubTitle>
-          {KRData?.overview ? KRData.overview : movie?.overview}
+          {data?.data.overview ? data.data.overview : movie?.overview}
         </S.SubTitle>
       </S.OverviewSection>
     </>
